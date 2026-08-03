@@ -21,6 +21,21 @@ rings. We buy the relationship at the moment of crisis and own the rebuild.
 
 ---
 
+## 📄 Print / share version
+
+**[`Business-Plan-Emergency-Home-Repair-and-Carpentry.pdf`](Business-Plan-Emergency-Home-Repair-and-Carpentry.pdf)**
+— all 16 documents compiled into a single 72-page PDF with a cover page, linked table of
+contents, and page numbers. This is the version to hand the investor.
+
+To regenerate after editing any markdown file:
+
+```bash
+pip install markdown playwright pypdf
+python3 tools/build-pdf.py
+```
+
+---
+
 ## Read in this order
 
 | # | Document | What it answers |

@@ -45,8 +45,8 @@ dedicated crew busy, and a dedicated crew sitting idle is a 40-point margin drag
 
 | Role | Count (Yr 1) | Base pay | Notes |
 |---|---|---|---|
-| **Managing Member — Production** | 1 | $60,000 salary | Field leadership, QC, on-call escalation |
-| **Managing Member — Sales/Admin** | 1 | $60,000 salary | Estimating, sales, adjuster relationships, finance |
+| **Managing Member — Production** | 1 | $54,000 salary | Field leadership, QC, on-call escalation |
+| **Managing Member — Sales/Admin** | 1 | $54,000 salary | Estimating, sales, adjuster relationships, finance |
 | **Lead Carpenter** | 2 (1 at start, 2 by mo. 4) | $30 – $38/hr | Runs a crew, reads plans, owns quality & the daily log |
 | **Carpenter / Helper** | 2 (1 at start, 2 by mo. 6) | $19 – $26/hr | Production support, demo, material handling |
 | **Office Coordinator** | 1 (PT mo. 1 → FT mo. 6) | $21 – $26/hr | Intake, scheduling, AR/AP, permits, review requests |
