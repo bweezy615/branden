@@ -294,7 +294,7 @@ how estimating learns.
    balance at 24% interest.
 5. **Preserve lien rights on every job.** Many states require a **preliminary notice**
    within a set window (often 20 days from first furnishing) or you lose lien rights
-   entirely. Find your state's rule and build it into Gate 5. → [§8.1](08-risk-insurance-compliance.md#81-licensing-the-fill-in-the-blank-checklist)
+   entirely. Find your state's rule and build it into Gate 5. → [§8.1](08-risk-insurance-compliance.md#81-licensing--the-fill-in-the-blank-checklist)
 6. **Collect a lien waiver from every subcontractor** with their payment. Otherwise a sub
    you already paid can lien your customer's house, and you will pay twice.
 7. **Set aside taxes weekly**, in a separate account. Pass-through income tax is not

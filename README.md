@@ -13,8 +13,8 @@ We run a 24/7 emergency home repair service that gets to a homeowner's door with
 element. Emergency work is real revenue — much of it billed to homeowners insurance —
 but its strategic job is **customer acquisition**. Every emergency call puts us inside
 a damaged house at the exact moment the owner has to decide who rebuilds it. We
-convert roughly one in four of those calls into a full carpentry or remodeling
-contract at 4–20x the ticket size. Competitors sell remodeling and hope the phone
+convert roughly one in four of the calls that involve real damage into a full
+carpentry or remodeling contract at 4–20x the ticket size. Competitors sell remodeling and hope the phone
 rings. We buy the relationship at the moment of crisis and own the rebuild.
 
 **That's the whole business. Everything in these documents serves that funnel.**

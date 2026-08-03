@@ -126,7 +126,7 @@ Stated up front, because a plan that only lists strengths is a brochure.
    as 1099 subcontractors when they are functionally employees, the exposure is back
    payroll taxes, penalties, a workers' comp audit that bills us for every uninsured
    sub, and personal liability that can pierce the LLC. This must be resolved before
-   the first job. → [§2.5](02-formation-and-ownership.md#25-the-worker-problem-read-this-first)
+   the first job. → [§2.5](02-formation-and-ownership.md#25-the-worker-problem--read-this-first)
 
 2. **Cash flow, not profitability.** Profitable contractors go bankrupt constantly. The
    defenses are non-negotiable: deposits before mobilization, draw schedules tied to
@@ -136,7 +136,7 @@ Stated up front, because a plan that only lists strengths is a brochure.
 
 3. **Answering the phone.** The entire acquisition thesis collapses if calls go to
    voicemail. This sounds trivial and it is the most common failure. Emergency callers
-   hang up and dial the next number in under 90 seconds. → [§4.1](04-operations-manual.md#41-intake-the-most-important-90-seconds)
+   hang up and dial the next number in under 90 seconds. → [§4.1](04-operations-manual.md#41-intake--the-most-important-90-seconds)
 
 ## 1.8 What "good" looks like at 12 months
 

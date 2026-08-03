@@ -152,7 +152,7 @@ certainty. Build every fixed price the same way, every time:
 
 - **Check your state's deposit cap.** Several states limit residential deposits (a
   percentage of contract or a flat dollar ceiling). Exceeding it can be a license
-  violation. → [§8.1](08-risk-insurance-compliance.md#81-licensing-the-fill-in-the-blank-checklist)
+  violation. → [§8.1](08-risk-insurance-compliance.md#81-licensing--the-fill-in-the-blank-checklist)
 - **Never let the work get ahead of the money.** If a draw is late, work stops that day —
   politely, in writing, per the contract. The instinct to "just keep going and sort it
   out" is how contractors end up financing a stranger's remodel.

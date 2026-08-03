@@ -52,7 +52,7 @@ dedicated crew busy, and a dedicated crew sitting idle is a 40-point margin drag
 | **Office Coordinator** | 1 (PT mo. 1 → FT mo. 6) | $21 – $26/hr | Intake, scheduling, AR/AP, permits, review requests |
 
 **Owner salary is a real expense, not a leftover.** It is in the P&L
-([§6.3](06-financial-model.md#63-operating-overhead)) because if you don't price your own
+([§6.3](06-financial-model.md#operating-overhead)) because if you don't price your own
 labor into your bids, every job looks profitable and the company slowly starves. Pay
 yourselves a below-market-but-real salary in Year 1, raise it in Year 2 when margins
 support it.

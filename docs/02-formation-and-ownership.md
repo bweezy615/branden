@@ -42,7 +42,7 @@ Do these in order. Steps 1–4 can genuinely be done in one evening online.
 | 6 | Open the business bank account | Any business bank | $0 | Requires Articles + EIN + Operating Agreement |
 | 7 | Open a business credit card | Same bank | $0 | Materials float; also builds business credit separate from personal |
 | 8 | Register for state tax accounts | State Dept. of Revenue | $0 – $50 | Sales/use tax, withholding, unemployment insurance |
-| 9 | Contractor license / registration | State contractor board | Varies widely | **See [§8.1](08-risk-insurance-compliance.md#81-licensing-the-fill-in-the-blank-checklist)** |
+| 9 | Contractor license / registration | State contractor board | Varies widely | **See [§8.1](08-risk-insurance-compliance.md#81-licensing--the-fill-in-the-blank-checklist)** |
 | 10 | Local business license | City / county | $25 – $400 | Required in most municipalities |
 | 11 | Bind insurance | Broker | See [§8.2](08-risk-insurance-compliance.md#82-the-insurance-stack) | **Nothing happens before this** |
 
@@ -83,7 +83,7 @@ holds 51% and starts directing jobs they've never visited.
 **Operators must also take a market-rate salary** for their work, paid as an operating
 expense *before* profit distributions. Equity is not compensation for showing up. If
 Operator A works 55 hours a week, that labor is a cost of goods, not an investment. Build
-it into the P&L (it is — see [§6.3](06-financial-model.md#63-operating-overhead)) or you
+it into the P&L (it is — see [§6.3](06-financial-model.md#operating-overhead)) or you
 will systematically overstate profitability and understate your bid prices.
 
 **Vesting.** Operator equity should vest over 3–4 years with a 1-year cliff. If one
