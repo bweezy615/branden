@@ -4,7 +4,7 @@
 
 ---
 
-What Marco actually does after the check clears. Built for the **$1,450 / $750 media**
+What Marvo actually does after the check clears. Built for the **$1,450 / $750 media**
 tier at roughly **$25/day**.
 
 **Total time: ~11 hours across 30 days.** Front-loaded — about 6 of those hours are in
@@ -23,8 +23,8 @@ wastes the client's media and your credibility simultaneously.
 | 2 | **Scoreboard signed** | 30m | [Form](forms/scoreboard-agreement.md). Do this on a call, not email — the conversation is the value. |
 | 3 | **Client creates Business Manager** | 20m | Walk them through it live. `business.facebook.com`. Their name, their ownership. |
 | 4 | **Ad account created inside it** | 10m | Correct time zone and currency — **these cannot be changed later.** |
-| 5 | **Marco added as Partner (admin)** | 5m | Partner access only. **Never take their password.** |
-| 6 | **Marco's payment method added** | 5m | Plus a backup card. Call the card issuer about incoming small recurring charges. |
+| 5 | **Marvo added as Partner (admin)** | 5m | Partner access only. **Never take their password.** |
+| 6 | **Marvo's payment method added** | 5m | Plus a backup card. Call the card issuer about incoming small recurring charges. |
 | 7 | **Page connected, Instagram linked** | 15m | Confirm the page info is actually correct — hours, address, phone. Often it isn't. |
 | 8 | **Pixel installed** *(if they have a site)* | 30m | Verify it fires. If no site, skip — optimize for messages or calls instead. |
 | 9 | **Creative gathered** | 90m | See below. This is the real work. |

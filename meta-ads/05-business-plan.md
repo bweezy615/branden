@@ -34,7 +34,7 @@ to, deliver it well enough that half of them renew, and defend the renewal margi
 | Meta media (COGS) | $750 | $850 |
 | **Gross profit** | **$700** | **$600** |
 | Gross margin | 48% | 41% |
-| **Marco's hours** | **~11** | **~4** |
+| **Marvo's hours** | **~11** | **~4** |
 | **Effective hourly** | **$64** | **$150** |
 
 ### Where the 11 hours go in month 1

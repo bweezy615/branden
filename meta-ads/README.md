@@ -1,7 +1,7 @@
 # Meta Ads Service — Budget Barn Pitch & Business Plan
 
 **Prepared:** August 2026
-**Seller:** Marco
+**Seller:** Marvo
 **Target account:** Budget Barn
 **Engagement:** 30-day paid social test, Meta (Facebook + Instagram)
 
@@ -31,14 +31,16 @@ through twelve.** Everything in these documents serves that.
 | 1 | [The Pitch](01-the-pitch.md) | Word-for-word script, the reframe, all 9 objections |
 | 2 | [Pricing & Money Mechanics](02-pricing-and-money-mechanics.md) | **The core.** How to fund the ad, stack revenue on top, and say the number |
 | 3 | [Trust & Risk Reversal](03-trust-and-risk-reversal.md) | How to sell something that might not work, honestly |
-| 4 | [30-Day Operating Plan](04-30-day-operating-plan.md) | What Marco actually does, day by day |
+| 4 | [30-Day Operating Plan](04-30-day-operating-plan.md) | What Marvo actually does, day by day |
 | 5 | [Business Plan](05-business-plan.md) | Unit economics, time cost, break-even, 12-month scale path |
+| 6 | [**Account Brief — Budget Barn**](06-budget-barn-account-brief.md) | **Who they actually are.** Social media read, the auction model, tailored campaign structure, meeting talking points |
 
 **Client-facing documents** — [`forms/`](forms/)
 
 | Document | Use |
 |---|---|
 | [Proposal — Budget Barn](forms/budget-barn-proposal.md) | Hand or email this. One page. Never send a deck. |
+| [**Cost Breakdown — Budget Barn**](forms/budget-barn-cost-breakdown.md) | Line-by-line where the $1,450 goes, plus their payback math. Bring it with the proposal. |
 | [Scoreboard Agreement](forms/scoreboard-agreement.md) | Sign **before** launch. Defines what "worked" means. |
 | [Service Agreement](forms/service-agreement.md) | Terms, payment, no-guarantee clause, the day-14 exit |
 
@@ -73,21 +75,32 @@ Everything else is commentary.
 These are stated, not hidden. Correct them before the meeting and the numbers flex
 cleanly.
 
-1. **Budget Barn is a local retail / value-goods business** with a physical location
-   and a walk-in or local-delivery customer. If they're e-commerce-only or B2B, the
-   creative strategy in [Section 4](04-30-day-operating-plan.md) changes; the pricing
-   and trust structure do not.
-2. **Marco is the seller and the operator** — he pitches it and he runs it. If those
+1. ~~Budget Barn is a walk-in retail business.~~ **Resolved — it isn't.** Budget Barn
+   TN is a **liquidation auction business** in Gallatin, TN, selling returns and
+   overstock through weekly online auctions on HiBid, with local pickup and nationwide
+   shipping. This changes the campaign structure and the success metric.
+   **See [Section 6](06-budget-barn-account-brief.md).** Pricing and trust structure
+   are unaffected.
+2. **Marvo is the seller and the operator** — he pitches it and he runs it. If those
    are two people, the time cost in [Section 5](05-business-plan.md) splits but the
    totals hold.
-3. **Budget Barn has never run real paid social** — maybe a boosted post or two. This
-   is the most common case and the pitch assumes it. If they've run and failed before,
-   use the "burned before" objection track in [Section 1](01-the-pitch.md#objection-4).
-4. **Ad spend is funded on Marco's payment method**, client prepays the package. See
+3. **Budget Barn has never run real paid social** — maybe a boosted post or two.
+   *Unconfirmed.* Check the Meta Ad Library before the meeting. If they've run and
+   failed before, use the "burned before" objection track in
+   [Section 1](01-the-pitch.md#objection-4).
+4. **Ad spend is funded on Marvo's payment method**, client prepays the package. See
    [Section 2](02-pricing-and-money-mechanics.md#the-mechanics-how-the-money-actually-moves)
    for why, and the alternative if card float is a problem.
 
-**Confirm before the meeting:** what Budget Barn actually sells and their average
-ticket. Those two facts set the ad angle and tell you whether $1,450 is cheap or
-expensive to them — a $40 average ticket and a $1,400 average ticket are different
-conversations.
+### Still open — resolve before the meeting
+
+- **Can a Meta pixel be installed on HiBid?** Budget Barn doesn't own that platform,
+  so conversion tracking may be limited. This determines the scoreboard metric.
+  [Section 6.4](06-budget-barn-account-brief.md#-the-tracking-problem-most-important--read-this-one-twice).
+- **Real follower counts on both pages.** Facebook, Instagram, and HiBid all block
+  automated reads — the numbers in Section 6 come from cached search results and need
+  eyes on the actual profiles.
+- **Andrew's three numbers:** bidders per auction, new bidders per auction, average
+  hammer price. These turn the
+  [cost breakdown](forms/budget-barn-cost-breakdown.md#5-what-it-needs-to-produce-to-pay-for-itself)
+  from illustrative into real.

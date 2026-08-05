@@ -29,7 +29,7 @@ the market, which is a very different conversation to have in week five.
 
 ## 3.2 The five mechanisms
 
-Each one is cheap for Marco and expensive-feeling for the client. That asymmetry is the
+Each one is cheap for Marvo and expensive-feeling for the client. That asymmetry is the
 whole point.
 
 ### 1. The scoreboard, signed before any money is spent
@@ -56,7 +56,7 @@ The scoreboard must define three outcomes, not two:
 |---|---|---|
 | **Worked** | Hit or beat the primary metric | Renewal conversation, day 26 |
 | **Inconclusive** | Real signal, not enough volume or a fixable problem | Honest recommendation: one more month or stop. Either is fine. |
-| **Didn't work** | Clear miss, no viable path visible | Marco says so first, plainly, and doesn't pitch month two |
+| **Didn't work** | Clear miss, no viable path visible | Marvo says so first, plainly, and doesn't pitch month two |
 
 **"Inconclusive" is the row that saves the relationship.** Most 30-day tests on a $750
 budget land there. Naming it in advance means a middling result isn't a broken promise
@@ -69,7 +69,7 @@ At the two-week mark: a sit-down, real numbers, and a genuine option to stop.
 > "If it's clearly not working, we stop right there and I send back whatever ad money
 > hasn't been spent."
 
-**Cost to Marco:** near zero. You've collected the full package, the fee is earned by
+**Cost to Marvo:** near zero. You've collected the full package, the fee is earned by
 day 14, and the refund is only unspent media. In practice almost nobody takes it —
 by day 14 there's usually *something* interesting on the screen, and the sunk-cost
 instinct runs toward finishing.
@@ -92,7 +92,7 @@ See [§2.5](02-pricing-and-money-mechanics.md#25-the-honest-answer-script).
 ### 4. They own the asset
 
 Business Manager, ad account, page, pixel, audiences — all in Budget Barn's name, from
-day one. Marco has partner access, which they can revoke in two clicks.
+day one. Marvo has partner access, which they can revoke in two clicks.
 
 > "If you fire me at the end of the month, you keep all of it and hand the keys to
 > whoever's next. I don't hold your account hostage."

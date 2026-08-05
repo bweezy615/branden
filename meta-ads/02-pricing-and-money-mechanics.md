@@ -87,7 +87,7 @@ exists to make the middle feel modest.
 | **Client pays (all in)** | **$895** | **$1,450** | **$2,400** |
 | Meta ad spend inside it | $420 | $750 | $1,350 |
 | Roughly per day | ~$14/day | ~$25/day | ~$45/day |
-| **Marco gross** | **$475** | **$700** | **$1,050** |
+| **Marvo gross** | **$475** | **$700** | **$1,050** |
 | **Gross margin** | 53% | 48% | 44% |
 | Ad variations built | 2 | 4 | 6 |
 | Audiences tested | 1 | 3 | 4–5 |
@@ -114,8 +114,8 @@ context.
 |---|---|---|
 | Client pays | $1,450 | **$1,450** (unchanged) |
 | Meta ad spend inside | $750 | **$850** (increased) |
-| Marco gross | $700 | $600 |
-| **Marco's hours** | **~11** | **~4** |
+| Marvo gross | $700 | $600 |
+| **Marvo's hours** | **~11** | **~4** |
 | **Effective rate** | **$64/hr** | **$150/hr** |
 
 **Hold the price and increase their ad spend.** Do not discount month two, and do not
@@ -139,12 +139,12 @@ This is the operational answer to "how do I pay for the ad and add my revenue on
 ### The recommended structure
 
 ```
-Budget Barn  ──$1,450 (one invoice, paid in full before launch)──▶  Marco
+Budget Barn  ──$1,450 (one invoice, paid in full before launch)──▶  Marvo
                                                                       │
                                                     ┌─────────────────┴──────────────┐
                                                     │                                │
-                                          $750 to Meta                    $700 stays with Marco
-                                    (Marco's card, on Budget Barn's         (gross profit)
+                                          $750 to Meta                    $700 stays with Marvo
+                                    (Marvo's card, on Budget Barn's         (gross profit)
                                      ad account, as Partner)
 ```
 
@@ -154,29 +154,29 @@ Budget Barn  ──$1,450 (one invoice, paid in full before launch)──▶  Ma
    Free. Takes about ten minutes. **They own it.** They create the ad account inside
    it. Their page, their pixel, their audiences, their data.
 
-2. **They add Marco as a Partner with admin access** on the ad account. Marco never
+2. **They add Marvo as a Partner with admin access** on the ad account. Marvo never
    receives a password, never logs in as them, never has personal-account credentials.
    Access is granted and revoked cleanly from their side.
 
-3. **Marco's payment method goes on the ad account.** This is the actual mechanism of
-   the whole business model: Marco's card funds the media, so all Meta billing hits
-   Marco and never touches Budget Barn. The client never sees a Meta charge, never
+3. **Marvo's payment method goes on the ad account.** This is the actual mechanism of
+   the whole business model: Marvo's card funds the media, so all Meta billing hits
+   Marvo and never touches Budget Barn. The client never sees a Meta charge, never
    gets a surprise, and never has a reason to reconcile your spend against your price
    unless they ask.
 
-4. **Budget Barn pays Marco $1,450 in full before the first ad goes live.** Invoice,
+4. **Budget Barn pays Marvo $1,450 in full before the first ad goes live.** Invoice,
    card, ACH, check that's cleared — whatever, but cleared and in the account.
 
-5. **Marco runs the media, keeps the spread.**
+5. **Marvo runs the media, keeps the spread.**
 
-### Why Marco's card and not theirs
+### Why Marvo's card and not theirs
 
-| | Marco's card | Client's card |
+| | Marvo's card | Client's card |
 |---|---|---|
 | Client sees Meta charges | No | Yes — many, small, irregular |
 | Bundled pricing possible | Yes | No — split is exposed |
-| Payment-hold risk lands on | Marco (who can fix it) | Client (who can't) |
-| Cash float carried by | Marco | Client |
+| Payment-hold risk lands on | Marvo (who can fix it) | Client (who can't) |
+| Cash float carried by | Marvo | Client |
 | Reconciliation friction | None | Constant |
 
 If the float is genuinely a problem — you don't have the credit line, or you're

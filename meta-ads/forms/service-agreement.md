@@ -6,7 +6,7 @@
 
 ---
 
-**Between:** `[Marco's legal business name]` ("Provider")
+**Between:** `[Marvo's legal business name]` ("Provider")
 **And:** `_______________________` ("Client")
 **Date:** `___________`
 

@@ -59,8 +59,8 @@ We agree in advance that these are the only three, and what each one means.
 | Outcome | Definition | What we do |
 |---|---|---|
 | ✅ **Worked** | Hit or beat `______` primary results at or under `$______` each | Discuss month 2 on day 26 |
-| ⚠️ **Inconclusive** | Real signal, but not enough volume or a fixable problem showed up | Marco gives an honest recommendation — one more month, or stop. Either is a fine answer. |
-| ❌ **Didn't work** | Clearly missed with no visible path at this budget | Marco says so first. No month-2 pitch. Clean handover. |
+| ⚠️ **Inconclusive** | Real signal, but not enough volume or a fixable problem showed up | Marvo gives an honest recommendation — one more month, or stop. Either is a fine answer. |
+| ❌ **Didn't work** | Clearly missed with no visible path at this budget | Marvo says so first. No month-2 pitch. Clean handover. |
 
 **We both acknowledge that on a 30-day test at this budget, "inconclusive" is a
 genuinely likely result and is not a failure of the work.**
@@ -75,7 +75,7 @@ genuinely likely result and is not a failure of the work.**
 | Answering phone calls from the ad | `____________` | — |
 | Asking walk-ins "how did you hear about us?" | `____________` | every customer |
 | Supplying photos / video / offers | `____________` | before day 0 |
-| Everything inside the ad account | Marco | daily |
+| Everything inside the ad account | Marvo | daily |
 
 **Both parties acknowledge:** if inbound messages and calls go unanswered, results will
 look worse than the advertising actually performed, and that is not something the ad
@@ -87,13 +87,13 @@ account can fix.
 
 - [ ] **Week one will look bad.** The platform needs roughly a week of clean data
       before it performs. Early numbers are noise, not results.
-- [ ] **Marco will deliberately not make changes in week one.** Changes reset the
+- [ ] **Marvo will deliberately not make changes in week one.** Changes reset the
       system's learning and cost money.
 - [ ] **Most of the ads will lose.** We're running four to find one. That's the test
       working, not failing.
 - [ ] **Attribution is imperfect.** Someone may see the ad Tuesday and walk in
       Saturday and never mention it. We will undercount. Both parties accept this.
-- [ ] **No result is guaranteed.** Marco guarantees the work, the spend, the receipts,
+- [ ] **No result is guaranteed.** Marvo guarantees the work, the spend, the receipts,
       and an honest verdict. Nobody can guarantee that people buy.
 
 ---
@@ -110,4 +110,4 @@ and the client retains the account and everything built in it.
 
 Client `_______________________________`  Date `____________`
 
-Marco `_______________________________`  Date `____________`
+Marvo `_______________________________`  Date `____________`

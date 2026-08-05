@@ -364,7 +364,7 @@ Then actually call Thursday. Most of this business is calling Thursday.
 
 ---
 
-## 1.5 Rules for Marco
+## 1.5 Rules for Marvo
 
 Non-negotiable, in order of how much money they'll save you.
 
