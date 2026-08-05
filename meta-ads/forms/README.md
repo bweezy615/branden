@@ -11,6 +11,10 @@ Three documents. Use them in this order, every time, no exceptions.
 | 2 | [**Scoreboard Agreement**](scoreboard-agreement.md) | Signed **before** any money is spent | Decides what "it worked" means while everyone is still calm. This is the document that prevents week-five arguments. |
 | 3 | [**Service Agreement**](service-agreement.md) | Signed with payment, before launch | Payment terms, account ownership, the day-14 exit, and the no-guarantee clause. |
 
+**Also here:** [**HiBid Tracking Inquiry**](hibid-tracking-email.md) — not client-facing.
+Send before the Budget Barn meeting if there's time, or the same day you're hired. The
+answer decides the scoreboard metric.
+
 ---
 
 ## Rules

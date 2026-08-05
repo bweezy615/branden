@@ -27,15 +27,29 @@
 
 *Pick ONE. This is the number the whole month gets judged on.*
 
+**For an auction business** *(Budget Barn — pick based on what tracking turns out to
+support; see the [HiBid inquiry](hibid-tracking-email.md))*
+
+- [ ] New registered bidders → target: **______ over 30 days**
+- [ ] Clicks through to the live auction → target: **______ over 30 days**
+- [ ] Auction-alert list sign-ups (text/email) → target: **______ over 30 days**
+- [ ] Lift in new bidders per auction vs. pre-campaign baseline → target: **+______%**
+
+**For a walk-in or service business**
+
 - [ ] Messages / calls from the ad → target: **______ over 30 days**
 - [ ] Website visits → target: **______ over 30 days**
 - [ ] Form fills / sign-ups → target: **______ over 30 days**
 - [ ] Walk-ins who mention the ad → target: **______ over 30 days**
+
 - [ ] Other: `________________________` → target: **______**
 
 **Cost per result we'd consider acceptable:** `$________`
 
 *How we'll count it:* `________________________________________________________`
+
+**Pre-campaign baseline** *(fill this in on day 0 — you cannot go back and get it
+later):* `_________________________________________________________________`
 
 ---
 
@@ -91,8 +105,12 @@ account can fix.
       system's learning and cost money.
 - [ ] **Most of the ads will lose.** We're running four to find one. That's the test
       working, not failing.
-- [ ] **Attribution is imperfect.** Someone may see the ad Tuesday and walk in
-      Saturday and never mention it. We will undercount. Both parties accept this.
+- [ ] **Attribution is imperfect.** Someone may see the ad Tuesday and buy Saturday
+      and never mention it. We will undercount. Both parties accept this.
+- [ ] **Where the conversion happens may not be trackable.** *(Auction clients: if
+      bidding and registration occur on a third-party platform the client does not
+      own, some or all of the funnel cannot be measured directly. Both parties agree
+      to the measurement method recorded in Section 2 above, with its known limits.)*
 - [ ] **No result is guaranteed.** Marvo guarantees the work, the spend, the receipts,
       and an honest verdict. Nobody can guarantee that people buy.
 

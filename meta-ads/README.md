@@ -42,6 +42,7 @@ through twelve.** Everything in these documents serves that.
 | [Proposal — Budget Barn](forms/budget-barn-proposal.md) | Hand or email this. One page. Never send a deck. |
 | [**Cost Breakdown — Budget Barn**](forms/budget-barn-cost-breakdown.md) | Line-by-line where the $1,450 goes, plus their payback math. Bring it with the proposal. |
 | [Scoreboard Agreement](forms/scoreboard-agreement.md) | Sign **before** launch. Defines what "worked" means. |
+| [HiBid Tracking Inquiry](forms/hibid-tracking-email.md) | *Internal.* Send early — the answer decides the scoreboard metric. |
 | [Service Agreement](forms/service-agreement.md) | Terms, payment, no-guarantee clause, the day-14 exit |
 
 ---
