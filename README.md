@@ -55,6 +55,14 @@ agreement, daily job log, sub insurance checklist.
 
 ---
 
+## Also in this repo
+
+| Plan | What it is |
+|---|---|
+| [**Meta Ads Service**](meta-ads/) | Separate venture — selling 30-day Meta ad tests to local businesses. Pitch script, pricing and margin mechanics, trust/risk-reversal structure, unit economics, and client-facing forms. First target account: Budget Barn. |
+
+---
+
 ## The four numbers that decide whether this works
 
 Everything else is commentary. Track these weekly from day one.
