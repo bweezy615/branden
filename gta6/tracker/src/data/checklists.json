@@ -7,8 +7,8 @@
       {
         "title": "Before unlock",
         "items": [
-          { "id": "preload", "name": "Pre-load the game", "note": "Start the download from your console store page as soon as pre-load opens for your edition." },
-          { "id": "storage", "name": "Free up storage", "note": "Check the install size on your store page and clear space before pre-load." },
+          { "id": "preload", "name": "Pre-load the game", "note": "Pre-load opened Nov 10. Start it from your console store page and make sure it reaches 100%." },
+          { "id": "storage", "name": "Free up storage", "note": "Rockstar says up to 212 GB depending on your console. Leave extra room for a day-one update." },
           { "id": "firmware", "name": "Update console system software" },
           { "id": "bonus-pack", "name": "Confirm pre-order bonuses are on your account", "note": "Vintage Vice City Pack, plus a free month of GTA+ for digital pre-orders." },
           { "id": "controllers", "name": "Charge controllers and headset" },
@@ -19,7 +19,7 @@
       {
         "title": "Launch night",
         "items": [
-          { "id": "unlock-time", "name": "Know your unlock time", "note": "US: 12:00 a.m. ET on Nov 19 (9:00 p.m. PT on Nov 18) per launch-week reporting. Confirm on your console store." },
+          { "id": "unlock-time", "name": "Know your unlock time", "note": "Midnight local time on Thursday, Nov 19, on both PS5 and Xbox Series X|S (per Rockstar Support)." },
           { "id": "snacks", "name": "Snacks and drinks stocked" },
           { "id": "first-save", "name": "Make your first manual save" }
         ]
