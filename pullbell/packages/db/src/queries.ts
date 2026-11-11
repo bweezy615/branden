@@ -1,16 +1,20 @@
-import { and, asc, count, desc, eq, gte, ilike, inArray, lt, max, ne, or, type SQL } from "drizzle-orm";
+import { and, asc, count, desc, eq, gt, gte, ilike, inArray, lt, max, ne, or, sql, type SQL } from "drizzle-orm";
 import { getDb } from "./client";
 import { brandFollows, brands, listings, productFollows, products, restockEvents, retailers } from "./schema";
-import type {
-  Brand,
-  BrandDetail,
-  BrandWithCount,
-  FeedItem,
-  Following,
-  Listing,
-  ProductCard,
-  ProductDetail,
-  Retailer,
+import {
+  percentOff,
+  type Brand,
+  type BrandDetail,
+  type BrandWithCount,
+  type Category,
+  type Deal,
+  type FeedItem,
+  type Following,
+  type Listing,
+  type ProductCard,
+  type ProductDetail,
+  type Retailer,
+  type TrendingItem,
 } from "./shared";
 
 const WEEK_MS = 7 * 24 * 60 * 60 * 1000;
@@ -41,9 +45,13 @@ async function toCards(rows: ProductRow[]): Promise<ProductCard[]> {
     .innerJoin(retailers, eq(listings.retailerId, retailers.id))
     .where(and(inArray(listings.productId, rows.map((r) => r.id)), eq(listings.inStock, true)))
     .orderBy(asc(retailers.name));
-  return rows.map(({ id, ...row }) => ({
-    ...row,
-    inStockAt: inStock.filter((l) => l.productId === id).map(({ slug, name }) => ({ slug, name })),
+  return rows.map((row) => ({
+    slug: row.slug,
+    name: row.name,
+    imageUrl: row.imageUrl,
+    msrpCents: row.msrpCents,
+    brand: row.brand,
+    inStockAt: inStock.filter((l) => l.productId === row.id).map(({ slug, name }) => ({ slug, name })),
   }));
 }
 
@@ -71,6 +79,7 @@ function feedQuery(where: SQL | undefined, limit: number) {
 
 export async function getFeed(options: {
   brandSlug?: string;
+  category?: Category;
   followingDeviceId?: string;
   beforeId?: number;
   limit?: number;
@@ -78,6 +87,7 @@ export async function getFeed(options: {
   const db = getDb();
   const filters: (SQL | undefined)[] = [];
   if (options.brandSlug) filters.push(eq(brands.slug, options.brandSlug));
+  if (options.category) filters.push(eq(brands.category, options.category));
   if (options.beforeId) filters.push(lt(restockEvents.id, options.beforeId));
   if (options.followingDeviceId) {
     const deviceId = options.followingDeviceId;
@@ -100,12 +110,14 @@ export async function getFeed(options: {
 export async function listProducts(options: {
   query?: string;
   brandSlug?: string;
+  category?: Category;
   sort: "newest" | "name";
   limit?: number;
 }): Promise<ProductCard[]> {
   const filters: SQL[] = [];
   if (options.query) filters.push(ilike(products.name, `%${options.query}%`));
   if (options.brandSlug) filters.push(eq(brands.slug, options.brandSlug));
+  if (options.category) filters.push(eq(brands.category, options.category));
   const rows = await getDb()
     .select(productColumns)
     .from(products)
@@ -175,7 +187,7 @@ export async function getProduct(slug: string): Promise<ProductDetail | null> {
 
 export async function listBrands(): Promise<BrandWithCount[]> {
   return getDb()
-    .select({ slug: brands.slug, name: brands.name, productCount: count(products.id) })
+    .select({ slug: brands.slug, name: brands.name, category: brands.category, productCount: count(products.id) })
     .from(brands)
     .leftJoin(products, eq(products.brandId, brands.id))
     .groupBy(brands.id)
@@ -212,4 +224,69 @@ export async function getFollowing(deviceId: string): Promise<Following> {
 
 export async function listRetailers(): Promise<Retailer[]> {
   return getDb().select({ slug: retailers.slug, name: retailers.name }).from(retailers).orderBy(asc(retailers.name));
+}
+
+// Products ranked by attention this week: followers gained plus restocks detected.
+export async function getTrending(options: { category?: Category; limit?: number }): Promise<TrendingItem[]> {
+  const db = getDb();
+  const since = new Date(Date.now() - WEEK_MS);
+  const restocks = db
+    .select({ productId: listings.productId, n: count().as("restock_count") })
+    .from(restockEvents)
+    .innerJoin(listings, eq(restockEvents.listingId, listings.id))
+    .where(gte(restockEvents.detectedAt, since))
+    .groupBy(listings.productId)
+    .as("recent_restocks");
+  const follows = db
+    .select({ productId: productFollows.productId, n: count().as("follow_count") })
+    .from(productFollows)
+    .where(gte(productFollows.createdAt, since))
+    .groupBy(productFollows.productId)
+    .as("recent_follows");
+  const restockCount = sql<number>`coalesce(${restocks.n}, 0)`.mapWith(Number);
+  const followCount = sql<number>`coalesce(${follows.n}, 0)`.mapWith(Number);
+
+  const rows = await db
+    .select({ ...productColumns, restocks: restockCount, newFollowers: followCount })
+    .from(products)
+    .innerJoin(brands, eq(products.brandId, brands.id))
+    .leftJoin(restocks, eq(restocks.productId, products.id))
+    .leftJoin(follows, eq(follows.productId, products.id))
+    .where(and(gt(sql`${restockCount} + ${followCount}`, 0), options.category ? eq(brands.category, options.category) : undefined))
+    .orderBy(desc(sql`${restockCount} + ${followCount}`), desc(restockCount), asc(products.name))
+    .limit(options.limit ?? 30);
+
+  const cards = await toCards(rows);
+  return rows.map((row, i) => ({ product: cards[i], restocks: row.restocks, newFollowers: row.newFollowers }));
+}
+
+// In-stock listings priced below the product's listed price, biggest discount first.
+export async function getDeals(options: { category?: Category; limit?: number }): Promise<Deal[]> {
+  const rows = await getDb()
+    .select({
+      ...productColumns,
+      retailer: { slug: retailers.slug, name: retailers.name },
+      url: listings.url,
+      priceCents: listings.priceCents,
+    })
+    .from(listings)
+    .innerJoin(products, eq(listings.productId, products.id))
+    .innerJoin(brands, eq(products.brandId, brands.id))
+    .innerJoin(retailers, eq(listings.retailerId, retailers.id))
+    .where(
+      and(
+        eq(listings.inStock, true),
+        lt(listings.priceCents, products.msrpCents),
+        options.category ? eq(brands.category, options.category) : undefined,
+      ),
+    )
+    .orderBy(asc(sql`${listings.priceCents}::float / ${products.msrpCents}`))
+    .limit(options.limit ?? 50);
+
+  const cards = await toCards(rows);
+  return rows.map(({ retailer, url, priceCents, msrpCents }, i) => {
+    // Non-null: the where clause compares both columns, which excludes nulls
+    const price = priceCents!;
+    return { product: cards[i], retailer, url, priceCents: price, percentOff: percentOff(price, msrpCents!) };
+  });
 }

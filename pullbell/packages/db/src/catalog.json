@@ -2,27 +2,33 @@
   "brands": [
     {
       "slug": "needoh",
-      "name": "NeeDoh"
+      "name": "NeeDoh",
+      "category": "squishy"
     },
     {
       "slug": "pokemon-tcg",
-      "name": "Pokémon TCG"
+      "name": "Pokémon TCG",
+      "category": "tcg"
     },
     {
       "slug": "one-piece-tcg",
-      "name": "One Piece TCG"
+      "name": "One Piece TCG",
+      "category": "tcg"
     },
     {
       "slug": "pop-mart",
-      "name": "Pop Mart"
+      "name": "Pop Mart",
+      "category": "collectibles"
     },
     {
       "slug": "kidrobot",
-      "name": "Kidrobot"
+      "name": "Kidrobot",
+      "category": "collectibles"
     },
     {
       "slug": "sonny-angel",
-      "name": "Sonny Angel"
+      "name": "Sonny Angel",
+      "category": "collectibles"
     }
   ],
   "retailers": [

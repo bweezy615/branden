@@ -1,5 +1,5 @@
 // Helpers for Route Handlers (server only).
-import { DEVICE_HEADER, deviceExists, NotFoundError } from "@pullbell/db";
+import { DEVICE_HEADER, deviceExists, isCategory, NotFoundError, type Category } from "@pullbell/db";
 
 export class HttpError extends Error {
   constructor(
@@ -17,6 +17,14 @@ export async function requireDevice(request: Request): Promise<string> {
   if (!deviceId || !UUID.test(deviceId)) throw new HttpError(401, `Missing or invalid ${DEVICE_HEADER} header`);
   if (!(await deviceExists(deviceId))) throw new HttpError(401, "Unknown device");
   return deviceId;
+}
+
+// Reads the optional ?category= filter shared by the list endpoints.
+export function categoryParam(params: URLSearchParams): Category | undefined {
+  const value = params.get("category");
+  if (value === null) return undefined;
+  if (!isCategory(value)) throw new HttpError(400, `Unknown category: ${value}`);
+  return value;
 }
 
 // Turns known errors into JSON error responses; anything else is a 500 and is rethrown to the logs.

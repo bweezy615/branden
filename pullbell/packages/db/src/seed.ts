@@ -6,7 +6,7 @@ import { getDb } from "./client";
 import { brands, listings, products, retailers } from "./schema";
 
 type Catalog = {
-  brands: { slug: string; name: string }[];
+  brands: { slug: string; name: string; category: "tcg" | "squishy" | "collectibles" }[];
   retailers: { slug: string; name: string; adapter: "shopify" | "jsonld" }[];
   products: {
     slug: string;
@@ -31,7 +31,7 @@ const db = getDb();
 const brandRows = await db
   .insert(brands)
   .values(catalog.brands)
-  .onConflictDoUpdate({ target: brands.slug, set: { name: sql`excluded.name` } })
+  .onConflictDoUpdate({ target: brands.slug, set: { name: sql`excluded.name`, category: sql`excluded.category` } })
   .returning({ id: brands.id, slug: brands.slug });
 
 const retailerRows = await db

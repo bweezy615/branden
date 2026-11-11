@@ -1,7 +1,9 @@
 import {
+  CATEGORIES,
   formatPrice,
   restockHistory,
   timeAgo,
+  type Category,
   type FeedItem,
   type Listing,
   type ProductCard as Card,
@@ -10,7 +12,7 @@ import { Image } from "expo-image";
 import { Link } from "expo-router";
 import { SymbolView } from "expo-symbols";
 import { useState } from "react";
-import { ActivityIndicator, Linking, Pressable, StyleSheet, Text, View } from "react-native";
+import { ActivityIndicator, Linking, Pressable, ScrollView, StyleSheet, Text, View } from "react-native";
 import { useFollowing } from "@/lib/following";
 import { useColors } from "@/lib/theme";
 
@@ -144,6 +146,36 @@ export function HistoryGrid({ listings, events }: { listings: Listing[]; events:
         </View>
       ))}
     </View>
+  );
+}
+
+export function Chip({ label, active, onPress }: { label: string; active: boolean; onPress: () => void }) {
+  const c = useColors();
+  return (
+    <Pressable
+      onPress={onPress}
+      style={{
+        paddingHorizontal: 14,
+        paddingVertical: 7,
+        borderRadius: 99,
+        borderWidth: 1,
+        borderColor: active ? c.ink : c.line,
+        backgroundColor: active ? c.ink : c.card,
+      }}
+    >
+      <Text style={{ color: active ? c.onInk : c.ink, fontWeight: "600" }}>{label}</Text>
+    </Pressable>
+  );
+}
+
+export function CategoryChips({ value, onChange }: { value: Category | undefined; onChange: (c: Category | undefined) => void }) {
+  return (
+    <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={{ gap: 8, paddingBottom: 6 }}>
+      <Chip label="All" active={value === undefined} onPress={() => onChange(undefined)} />
+      {CATEGORIES.map((cat) => (
+        <Chip key={cat.slug} label={cat.name} active={value === cat.slug} onPress={() => onChange(cat.slug)} />
+      ))}
+    </ScrollView>
   );
 }
 

@@ -68,3 +68,21 @@ export function ExternalIcon({ className }: Props) {
     </svg>
   );
 }
+
+export function TrendIcon({ className }: Props) {
+  return (
+    <svg {...base} className={className}>
+      <path d="m22 7-8.5 8.5-5-5L2 17" />
+      <path d="M16 7h6v6" />
+    </svg>
+  );
+}
+
+export function TagIcon({ className }: Props) {
+  return (
+    <svg {...base} className={className}>
+      <path d="M12.6 2.6A2 2 0 0 0 11.2 2H4a2 2 0 0 0-2 2v7.2a2 2 0 0 0 .6 1.4l8.7 8.7a2.4 2.4 0 0 0 3.4 0l6.6-6.6a2.4 2.4 0 0 0 0-3.4z" />
+      <circle cx="7.5" cy="7.5" r="1.5" fill="currentColor" />
+    </svg>
+  );
+}

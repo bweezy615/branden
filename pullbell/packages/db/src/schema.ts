@@ -14,11 +14,13 @@ import {
 
 export const adapterKind = pgEnum("adapter_kind", ["shopify", "jsonld"]);
 export const pushKind = pgEnum("push_kind", ["webpush", "expo"]);
+export const categoryKind = pgEnum("category", ["tcg", "squishy", "collectibles"]);
 
 export const brands = pgTable("brands", {
   id: serial("id").primaryKey(),
   slug: text("slug").notNull().unique(),
   name: text("name").notNull(),
+  category: categoryKind("category").notNull(),
 });
 
 export const retailers = pgTable("retailers", {
@@ -83,6 +85,8 @@ export const productFollows = pgTable(
     productId: integer("product_id")
       .notNull()
       .references(() => products.id, { onDelete: "cascade" }),
+    // Used to rank Trending by follows gained recently
+    createdAt: timestamp("created_at", { withTimezone: true }).notNull().defaultNow(),
   },
   (t) => [primaryKey({ columns: [t.deviceId, t.productId] })],
 );

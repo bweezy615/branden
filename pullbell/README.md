@@ -9,6 +9,9 @@ It ships as an **iOS and Android app** (Expo) and an **installable web app** (Ne
 | | Web | iOS / Android |
 |---|---|---|
 | Live drops feed (every restock detected, newest first, filter by brand, auto-refresh) | ✓ | ✓ |
+| Trending: products with the most new followers and restocks this week | ✓ | ✓ |
+| Deals: in stock right now below the listed price, biggest discount first | ✓ | ✓ |
+| Categories (Trading cards, Squishy toys, Collectibles) to filter Trending, Deals and Search | ✓ | ✓ |
 | Search and "newly added" products | ✓ | ✓ |
 | Product page: where to buy (live stock and price per retailer), 7-day restock history grid, latest restocks, eBay/StockX resale links, more from the brand | ✓ | ✓ |
 | Brand pages: follow a whole brand, recent drops, all products | ✓ | ✓ |
@@ -76,7 +79,7 @@ Checks: `npm test` (adapter and restock-rule tests) and `npm run typecheck`.
 
 ## Adding products
 
-Edit `packages/db/src/catalog.json` (brands, retailers with their `adapter`, products with one or more listing URLs) and run `npm run db:seed` again. Re-seeding updates rows in place and keeps stock state and history.
+Edit `packages/db/src/catalog.json` (brands with their `category`, retailers with their `adapter`, products with one or more listing URLs) and run `npm run db:seed` again. Re-seeding updates rows in place and keeps stock state and history.
 
 The seed catalog has 24 real products across 6 brands and 10 retailers (40 listings). All were checked live on 2026-11-11.
 

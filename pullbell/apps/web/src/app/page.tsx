@@ -4,6 +4,7 @@ import { connection } from "next/server";
 import { Suspense } from "react";
 import { AutoRefresh } from "@/components/auto-refresh";
 import { FeedList } from "@/components/cards";
+import { chipClass } from "@/components/category-chips";
 
 export default function DropsPage(props: PageProps<"/">) {
   return (
@@ -25,18 +26,14 @@ async function Feed({ searchParams }: { searchParams: PageProps<"/">["searchPara
   const { brand } = await searchParams;
   const brandSlug = typeof brand === "string" ? brand : undefined;
   const [brands, items] = await Promise.all([listBrands(), getFeed({ brandSlug, limit: 50 })]);
-  const chip = (active: boolean) =>
-    `shrink-0 rounded-full px-3 py-1.5 text-sm font-medium ring-1 ${
-      active ? "bg-ink text-paper ring-ink" : "bg-card ring-line hover:ring-ink/40"
-    }`;
   return (
     <>
       <div className="-mx-4 flex gap-2 overflow-x-auto px-4 pb-1">
-        <Link href="/" className={chip(!brandSlug)}>
+        <Link href="/" className={chipClass(!brandSlug)}>
           All
         </Link>
         {brands.map((b) => (
-          <Link key={b.slug} href={`/?brand=${b.slug}`} className={chip(b.slug === brandSlug)}>
+          <Link key={b.slug} href={`/?brand=${b.slug}`} className={chipClass(b.slug === brandSlug)}>
             {b.name}
           </Link>
         ))}

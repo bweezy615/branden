@@ -3,10 +3,13 @@ import {
   DEVICE_HEADER,
   type BrandDetail,
   type BrandWithCount,
+  type Category,
+  type Deal,
   type FeedItem,
   type Following,
   type ProductCard,
   type ProductDetail,
+  type TrendingItem,
 } from "@pullbell/db/shared";
 import * as SecureStore from "expo-secure-store";
 
@@ -45,7 +48,10 @@ export const api = {
     if (options.following) params.set("following", "1");
     return call<FeedItem[]>(`/api/feed?${params}`);
   },
-  products: (query: string) => call<ProductCard[]>(`/api/products?q=${encodeURIComponent(query)}`),
+  products: (query: string, category?: Category) =>
+    call<ProductCard[]>(`/api/products?q=${encodeURIComponent(query)}${category ? `&category=${category}` : ""}`),
+  trending: (category?: Category) => call<TrendingItem[]>(`/api/trending${category ? `?category=${category}` : ""}`),
+  deals: (category?: Category) => call<Deal[]>(`/api/deals${category ? `?category=${category}` : ""}`),
   product: (slug: string) => call<ProductDetail>(`/api/products/${slug}`),
   brands: () => call<BrandWithCount[]>("/api/brands"),
   brand: (slug: string) => call<BrandDetail>(`/api/brands/${slug}`),

@@ -28,6 +28,7 @@ export default function RootLayout() {
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen name="product/[slug]" options={{ title: "" }} />
           <Stack.Screen name="brand/[slug]" options={{ title: "" }} />
+          <Stack.Screen name="brands" options={{ title: "Brands" }} />
         </Stack>
       </FollowingProvider>
     </ThemeProvider>

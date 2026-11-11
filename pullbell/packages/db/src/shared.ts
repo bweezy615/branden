@@ -2,6 +2,18 @@
 // Must not import anything that touches the database.
 
 export type Brand = { slug: string; name: string };
+
+export const CATEGORIES = [
+  { slug: "tcg", name: "Trading cards" },
+  { slug: "squishy", name: "Squishy toys" },
+  { slug: "collectibles", name: "Collectibles" },
+] as const;
+
+export type Category = (typeof CATEGORIES)[number]["slug"];
+
+export function isCategory(value: unknown): value is Category {
+  return CATEGORIES.some((c) => c.slug === value);
+}
 export type Retailer = { slug: string; name: string };
 
 export type ProductCard = {
@@ -41,7 +53,19 @@ export type ProductDetail = {
   related: ProductCard[];
 };
 
-export type BrandWithCount = Brand & { productCount: number };
+export type BrandWithCount = Brand & { category: Category; productCount: number };
+
+// Products gaining attention this week: new followers plus detected restocks
+export type TrendingItem = { product: ProductCard; newFollowers: number; restocks: number };
+
+// An in-stock listing priced below the product's listed price
+export type Deal = {
+  product: ProductCard;
+  retailer: Retailer;
+  url: string;
+  priceCents: number;
+  percentOff: number;
+};
 
 export type BrandDetail = {
   brand: Brand;
@@ -59,6 +83,10 @@ export type PushSubscriptionInput =
   | { kind: "expo"; token: string };
 
 export const DEVICE_HEADER = "x-device-id";
+
+export function percentOff(priceCents: number, listedCents: number): number {
+  return Math.round((1 - priceCents / listedCents) * 100);
+}
 
 export function formatPrice(cents: number | null): string {
   if (cents === null) return "MSRP unknown";

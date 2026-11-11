@@ -27,13 +27,22 @@ export default function TabLayout() {
         options={{ title: "Live drops", tabBarLabel: "Drops", tabBarIcon: icon({ ios: "bolt.fill", android: "bolt", web: "bolt" }) }}
       />
       <Tabs.Screen
+        name="trending"
+        options={{
+          title: "Trending this week",
+          tabBarLabel: "Trending",
+          tabBarIcon: icon({ ios: "chart.line.uptrend.xyaxis", android: "trending_up", web: "trending_up" }),
+        }}
+      />
+      <Tabs.Screen
+        name="deals"
+        options={{ title: "Deals", tabBarIcon: icon({ ios: "tag", android: "sell", web: "sell" }) }}
+      />
+      <Tabs.Screen
         name="search"
         options={{ title: "Search", tabBarIcon: icon({ ios: "magnifyingglass", android: "search", web: "search" }) }}
       />
-      <Tabs.Screen
-        name="brands"
-        options={{ title: "Brands", tabBarIcon: icon({ ios: "square.grid.2x2", android: "grid_view", web: "grid_view" }) }}
-      />
+
       <Tabs.Screen
         name="following"
         options={{ title: "Following", tabBarIcon: icon({ ios: "bell", android: "notifications", web: "notifications" }) }}

@@ -3,13 +3,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Suspense } from "react";
-import { BellIcon, BoltIcon, GridIcon, SearchIcon } from "./icons";
+import { BellIcon, BoltIcon, GridIcon, SearchIcon, TagIcon, TrendIcon } from "./icons";
 
+// Brands lives in the top nav only; on phones it is reached from Search.
 const ITEMS = [
-  { href: "/", label: "Drops", Icon: BoltIcon },
-  { href: "/products", label: "Search", Icon: SearchIcon },
-  { href: "/brands", label: "Brands", Icon: GridIcon },
-  { href: "/following", label: "Following", Icon: BellIcon },
+  { href: "/", label: "Drops", Icon: BoltIcon, phone: true },
+  { href: "/trending", label: "Trending", Icon: TrendIcon, phone: true },
+  { href: "/deals", label: "Deals", Icon: TagIcon, phone: true },
+  { href: "/products", label: "Search", Icon: SearchIcon, phone: true },
+  { href: "/brands", label: "Brands", Icon: GridIcon, phone: false },
+  { href: "/following", label: "Following", Icon: BellIcon, phone: true },
 ];
 
 function isActive(pathname: string | null, href: string) {
@@ -54,8 +57,8 @@ function TopNavLinks({ pathname }: { pathname: string | null }) {
 
 function BottomNavLinks({ pathname }: { pathname: string | null }) {
   return (
-    <nav className="fixed inset-x-0 bottom-0 z-20 grid grid-cols-4 border-t border-line bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur sm:hidden">
-      {ITEMS.map(({ href, label, Icon }) => (
+    <nav className="fixed inset-x-0 bottom-0 z-20 grid grid-cols-5 border-t border-line bg-paper/95 pb-[env(safe-area-inset-bottom)] backdrop-blur sm:hidden">
+      {ITEMS.filter((item) => item.phone).map(({ href, label, Icon }) => (
         <Link
           key={href}
           href={href}
