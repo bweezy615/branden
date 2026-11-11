@@ -100,3 +100,7 @@ Called out plainly so you can correct any that are wrong before you take this to
 
 Everything else can follow. Those six things are the difference between a business and
 an idea.
+
+---
+
+**Also in this repo:** [`pullbell/`](pullbell/README.md), a restock-alert app (iOS, Android, web) for collectibles.

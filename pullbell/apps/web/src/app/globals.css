@@ -1,0 +1,43 @@
+@import "tailwindcss";
+
+/* Pullbell palette: warm paper, deep ink, "bell" amber for alerts, "pull" violet for brands. */
+:root {
+  --paper: #faf7f2;
+  --card: #ffffff;
+  --ink: #17142a;
+  --muted: #6e6a7c;
+  --line: #e8e3da;
+  --bell: #ffc233;
+  --pull: #6b4cf6;
+  --live: #11a36a;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #110f1c;
+    --card: #1b1829;
+    --ink: #f5f2ea;
+    --muted: #9d98ad;
+    --line: #2c2840;
+    --bell: #ffc233;
+    --pull: #a48dff;
+    --live: #3ccf91;
+  }
+}
+
+@theme inline {
+  --color-paper: var(--paper);
+  --color-card: var(--card);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-line: var(--line);
+  --color-bell: var(--bell);
+  --color-pull: var(--pull);
+  --color-live: var(--live);
+  --font-sans: var(--font-geist-sans);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+}

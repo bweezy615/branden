@@ -1,0 +1,458 @@
+{
+  "brands": [
+    {
+      "slug": "needoh",
+      "name": "NeeDoh"
+    },
+    {
+      "slug": "pokemon-tcg",
+      "name": "Pokémon TCG"
+    },
+    {
+      "slug": "one-piece-tcg",
+      "name": "One Piece TCG"
+    },
+    {
+      "slug": "pop-mart",
+      "name": "Pop Mart"
+    },
+    {
+      "slug": "kidrobot",
+      "name": "Kidrobot"
+    },
+    {
+      "slug": "sonny-angel",
+      "name": "Sonny Angel"
+    }
+  ],
+  "retailers": [
+    {
+      "slug": "kidrobot",
+      "name": "Kidrobot",
+      "adapter": "shopify"
+    },
+    {
+      "slug": "sonny-angel-usa",
+      "name": "Sonny Angel USA",
+      "adapter": "shopify"
+    },
+    {
+      "slug": "friends-nyc",
+      "name": "Friends NYC",
+      "adapter": "shopify"
+    },
+    {
+      "slug": "anthill",
+      "name": "Anthill Shop",
+      "adapter": "shopify"
+    },
+    {
+      "slug": "orange-claw-club",
+      "name": "Orange Claw Club",
+      "adapter": "shopify"
+    },
+    {
+      "slug": "galactic-toys",
+      "name": "Galactic Toys",
+      "adapter": "shopify"
+    },
+    {
+      "slug": "collector-store",
+      "name": "Collector Store",
+      "adapter": "shopify"
+    },
+    {
+      "slug": "hobbiesville",
+      "name": "Hobbiesville",
+      "adapter": "shopify"
+    },
+    {
+      "slug": "schylling",
+      "name": "Schylling",
+      "adapter": "jsonld"
+    },
+    {
+      "slug": "gamenerdz",
+      "name": "GameNerdz",
+      "adapter": "jsonld"
+    }
+  ],
+  "products": [
+    {
+      "slug": "needoh-nice-cube",
+      "name": "NeeDoh Nice Cube",
+      "brand": "needoh",
+      "imageUrl": "https://schylling.com/wp-content/uploads/2023/07/NCBND-NeeDoh-Nice-Cube-Pkg-3QR-Blue-web.jpg",
+      "msrpCents": 599,
+      "listings": [
+        {
+          "retailer": "friends-nyc",
+          "url": "https://friendsnyc.com/products/needoh-nice-cube-stress-relief-toy"
+        },
+        {
+          "retailer": "anthill",
+          "url": "https://anthillshop.com/products/schylling-nice-cube-nee-doh"
+        },
+        {
+          "retailer": "schylling",
+          "url": "https://schylling.com/product/needoh-nice-cube/"
+        }
+      ]
+    },
+    {
+      "slug": "needoh-nice-cream-cone",
+      "name": "NeeDoh Nice Cream Cone",
+      "brand": "needoh",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/2636/1058/files/nice-cream-cone-needoh-assorted-stress-toy-friends-nyc-brooklyn-ny-682.webp?v=1775866307",
+      "msrpCents": 1499,
+      "listings": [
+        {
+          "retailer": "friends-nyc",
+          "url": "https://friendsnyc.com/products/nice-cream-cone-needoh"
+        }
+      ]
+    },
+    {
+      "slug": "needoh-teenie-swirl-4-pack",
+      "name": "NeeDoh Teenie Swirl 4-Pack",
+      "brand": "needoh",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/2636/1058/files/teenie-swirl-needoh-multi-pack-4-friends-nyc-brooklyn-ny-459.webp?v=1775866330",
+      "msrpCents": 1699,
+      "listings": [
+        {
+          "retailer": "friends-nyc",
+          "url": "https://friendsnyc.com/products/teenie-swirl-needoh-multi-pack"
+        }
+      ]
+    },
+    {
+      "slug": "needoh-teenie-nice-ice-baby",
+      "name": "NeeDoh Teenie Nice Ice Baby",
+      "brand": "needoh",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0994/0507/0621/files/23d0311e6c47d2e886794f82dd496114_ra_w806_h806_pa_w806_h806.jpg?v=1793143766",
+      "msrpCents": 495,
+      "listings": [
+        {
+          "retailer": "anthill",
+          "url": "https://anthillshop.com/products/schylling-teenie-singles-nice-ice-baby-needoh"
+        }
+      ]
+    },
+    {
+      "slug": "pokemon-ascended-heroes-elite-trainer-box",
+      "name": "Pokémon TCG: Mega Evolution—Ascended Heroes Elite Trainer Box",
+      "brand": "pokemon-tcg",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0653/5646/4296/files/1_9b2e2dd6-c8e3-4c60-9a81-b247aa9a0889.jpg?v=1771280774",
+      "msrpCents": 12499,
+      "listings": [
+        {
+          "retailer": "collector-store",
+          "url": "https://collectorstore.com/products/pokemon-ascended-heroes-elite-trainer-box"
+        },
+        {
+          "retailer": "gamenerdz",
+          "url": "https://www.gamenerdz.com/pokemon-mega-evolution-ascended-heroes-elite-trainer-box"
+        }
+      ]
+    },
+    {
+      "slug": "pokemon-destined-rivals-elite-trainer-box",
+      "name": "Pokémon TCG: Scarlet & Violet—Destined Rivals Elite Trainer Box",
+      "brand": "pokemon-tcg",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0653/5646/4296/files/pokemon-scarlet-violet-destined-rivals-elite-trainer-box-releasing-5-30-2025-233508.jpg?v=1748056603",
+      "msrpCents": 10999,
+      "listings": [
+        {
+          "retailer": "collector-store",
+          "url": "https://collectorstore.com/products/pokemon-scarlet-violet-destined-rivals-elite-trainer-box"
+        },
+        {
+          "retailer": "hobbiesville",
+          "url": "https://www.hobbiesville.com/products/reprint-pokemon-scarlet-and-violet-destined-rivals-elite-trainer-box-pre-order"
+        }
+      ]
+    },
+    {
+      "slug": "pokemon-prismatic-evolutions-elite-trainer-box",
+      "name": "Pokémon TCG: Scarlet & Violet—Prismatic Evolutions Elite Trainer Box",
+      "brand": "pokemon-tcg",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0653/5646/4296/files/pokemon-scarlet-violet-prismatic-evolutions-elite-trainer-box-944806.png?v=1737025268",
+      "msrpCents": 11999,
+      "listings": [
+        {
+          "retailer": "collector-store",
+          "url": "https://collectorstore.com/products/pokemon-scarlet-violet-prismatic-evolutions-elite-trainer-box"
+        },
+        {
+          "retailer": "hobbiesville",
+          "url": "https://www.hobbiesville.com/products/pokemon-scarlet-and-violet-8-5-elite-trainer-box-pre-order"
+        }
+      ]
+    },
+    {
+      "slug": "pokemon-phantasmal-flames-elite-trainer-box",
+      "name": "Pokémon TCG: Mega Evolution—Phantasmal Flames Elite Trainer Box",
+      "brand": "pokemon-tcg",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0653/5646/4296/files/1_7c6f6ce5-4817-40db-a745-80068e68e838.jpg?v=1762793875",
+      "msrpCents": 14499,
+      "listings": [
+        {
+          "retailer": "collector-store",
+          "url": "https://collectorstore.com/products/pokemon-phantasmal-flames-booster-elite-trainer-box"
+        }
+      ]
+    },
+    {
+      "slug": "one-piece-op15-adventure-on-kamis-island-booster-box",
+      "name": "One Piece Card Game: Adventure on Kami's Island Booster Box (OP-15)",
+      "brand": "one-piece-tcg",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0653/5646/4296/files/img_item02_b532c2bc-4c33-41d1-b1d5-38d1cf0a314b.jpg?v=1774371473",
+      "msrpCents": 24499,
+      "listings": [
+        {
+          "retailer": "collector-store",
+          "url": "https://collectorstore.com/products/one-piece-op-15-booster-box"
+        },
+        {
+          "retailer": "hobbiesville",
+          "url": "https://www.hobbiesville.com/products/one-piece-cg-op-15-booster-box-pre-order"
+        }
+      ]
+    },
+    {
+      "slug": "one-piece-op14-azure-seas-seven-booster-box",
+      "name": "One Piece Card Game: The Azure Sea's Seven Booster Box (OP-14)",
+      "brand": "one-piece-tcg",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0653/5646/4296/files/1_93185eeb-4808-4b5b-b98c-efd680acdc9d.jpg?v=1767707382",
+      "msrpCents": 24999,
+      "listings": [
+        {
+          "retailer": "collector-store",
+          "url": "https://collectorstore.com/products/one-piece-op-14-booster-box"
+        },
+        {
+          "retailer": "hobbiesville",
+          "url": "https://www.hobbiesville.com/products/one-piece-cg-op-14-booster-box-pre-order-1"
+        }
+      ]
+    },
+    {
+      "slug": "one-piece-op13-carrying-on-his-will-booster-box",
+      "name": "One Piece Card Game: Carrying On His Will Booster Box (OP-13)",
+      "brand": "one-piece-tcg",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0653/5646/4296/files/1_070d1ba0-ee35-499d-a112-cf3a046f8044.jpg?v=1761752747",
+      "msrpCents": 42999,
+      "listings": [
+        {
+          "retailer": "collector-store",
+          "url": "https://collectorstore.com/products/one-piece-tcg-carrying-on-his-will-booster-box-op-13"
+        },
+        {
+          "retailer": "hobbiesville",
+          "url": "https://www.hobbiesville.com/products/one-piece-cg-op-14-booster-box-pre-order"
+        }
+      ]
+    },
+    {
+      "slug": "one-piece-op12-legacy-of-the-master-booster-box",
+      "name": "One Piece Card Game: Legacy of the Master Booster Box (OP-12)",
+      "brand": "one-piece-tcg",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0653/5646/4296/files/BJP2781644-1__96191.png?v=1755262805",
+      "msrpCents": 29999,
+      "listings": [
+        {
+          "retailer": "collector-store",
+          "url": "https://collectorstore.com/products/one-piece-legacy-of-the-master-booster-box"
+        },
+        {
+          "retailer": "hobbiesville",
+          "url": "https://www.hobbiesville.com/products/one-piece-cg-op-12-booster-box-pre-order"
+        }
+      ]
+    },
+    {
+      "slug": "labubu-exciting-macaron-blind-box",
+      "name": "Labubu The Monsters Exciting Macaron Blind Box",
+      "brand": "pop-mart",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0878/5254/files/6941848244741_2.jpg?v=1785720654",
+      "msrpCents": 1295,
+      "listings": [
+        {
+          "retailer": "galactic-toys",
+          "url": "https://galactictoys.com/products/pop-mart-labubu-v1-exciting-macaron-the-monsters-series-blind-box-authentic"
+        },
+        {
+          "retailer": "orange-claw-club",
+          "url": "https://orangeclawclub.com/products/pop-mart-the-monsters-exciting-macaron-labubu-blind-box"
+        }
+      ]
+    },
+    {
+      "slug": "labubu-have-a-seat-blind-box",
+      "name": "Labubu The Monsters Have a Seat Blind Box",
+      "brand": "pop-mart",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0878/5254/files/6941848255204.jpg?v=1785720654",
+      "msrpCents": 1345,
+      "listings": [
+        {
+          "retailer": "galactic-toys",
+          "url": "https://galactictoys.com/products/pop-mart-labubu-v2-have-a-seat-the-monsters-series-blind-box-authentic"
+        },
+        {
+          "retailer": "orange-claw-club",
+          "url": "https://orangeclawclub.com/products/pop-mart-the-monsters-labubu-have-a-seat-blind-box"
+        }
+      ]
+    },
+    {
+      "slug": "labubu-big-into-energy-blind-box",
+      "name": "Labubu The Monsters Big Into Energy Vinyl Plush Pendant Blind Box",
+      "brand": "pop-mart",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0878/5254/files/bieblindbox_3d49b22c-bc56-4a47-baf0-8f2d78c20715.jpg?v=1793159006",
+      "msrpCents": 1435,
+      "listings": [
+        {
+          "retailer": "galactic-toys",
+          "url": "https://galactictoys.com/products/pop-mart-labubu-v3-big-into-energy-the-monsters-series-blind-box-authentic"
+        },
+        {
+          "retailer": "orange-claw-club",
+          "url": "https://orangeclawclub.com/products/labubu-popmart-big-into-energy-pendant-keychain"
+        }
+      ]
+    },
+    {
+      "slug": "skullpanda-limpressionnisme-plush-blind-box",
+      "name": "Skullpanda L'impressionnisme Plush Pendant Blind Box",
+      "brand": "pop-mart",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0605/4376/2529/files/Skullpanda-limpressionnisme-plush-doll-keychain-santa-ana-952225.png?v=1761869243",
+      "msrpCents": 5000,
+      "listings": [
+        {
+          "retailer": "orange-claw-club",
+          "url": "https://orangeclawclub.com/products/skullpanda-impressionnisme-plush-blind-box"
+        }
+      ]
+    },
+    {
+      "slug": "kidrobot-snack-attack-dunny-blind-box",
+      "name": "Snack Attack Dunny Blind Box Mini Figure Series",
+      "brand": "kidrobot",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0584/3841/files/KR_SnackAttack_WebMobile_NoCTA.png?v=1788551738",
+      "msrpCents": 1699,
+      "listings": [
+        {
+          "retailer": "kidrobot",
+          "url": "https://www.kidrobot.com/products/snack-attack-dunny-blind-box-mini-figure-series"
+        }
+      ]
+    },
+    {
+      "slug": "kidrobot-amber-dunny-8-inch-resin",
+      "name": "Amber Dunny 8\" Resin Art Figure",
+      "brand": "kidrobot",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0584/3841/files/Amber_Dunny_11_00_37_AM.png?v=1777563288",
+      "msrpCents": 15999,
+      "listings": [
+        {
+          "retailer": "kidrobot",
+          "url": "https://www.kidrobot.com/products/amber-dunny-8-inch-resin-art-figure"
+        }
+      ]
+    },
+    {
+      "slug": "kidrobot-smorkin-labbit-choice-cuts",
+      "name": "Smorkin Labbit 2.5\" Choice Cuts",
+      "brand": "kidrobot",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0584/3841/files/labbitchoicecut.webp?v=1765821264",
+      "msrpCents": 1199,
+      "listings": [
+        {
+          "retailer": "kidrobot",
+          "url": "https://www.kidrobot.com/products/smorkin-labbit-choice-cuts"
+        }
+      ]
+    },
+    {
+      "slug": "kidrobot-coca-cola-8-inch-resin-dunny",
+      "name": "Kidrobot x Coca-Cola 8\" Resin Dunny Art Figure (Limited Edition)",
+      "brand": "kidrobot",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0584/3841/files/KR18048-PKG-Coca-Cola_8-Inch-Resin-Dunny_Coca-Cola-Resin-Dunny_21.jpg?v=1768415109",
+      "msrpCents": 15000,
+      "listings": [
+        {
+          "retailer": "kidrobot",
+          "url": "https://www.kidrobot.com/products/coca-cola-classic-resin-dunny-art-figure-limited-edition"
+        }
+      ]
+    },
+    {
+      "slug": "sonny-angel-animal-series-1",
+      "name": "Sonny Angel Animal Series 1",
+      "brand": "sonny-angel",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0515/8394/2805/products/products_thumbnail_animal-series-ver-1_1.jpg?v=1610115126",
+      "msrpCents": 1225,
+      "listings": [
+        {
+          "retailer": "sonny-angel-usa",
+          "url": "https://sonnyangelusa.com/products/animal-series-ver-1"
+        },
+        {
+          "retailer": "friends-nyc",
+          "url": "https://friendsnyc.com/products/sonny-angel-doll-animal-1-blind-box"
+        }
+      ]
+    },
+    {
+      "slug": "sonny-angel-marine-series",
+      "name": "Sonny Angel Marine Series",
+      "brand": "sonny-angel",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0515/8394/2805/products/products_thumbnail_minifigure-marine-series-2019_1.jpg?v=1610117542",
+      "msrpCents": 1225,
+      "listings": [
+        {
+          "retailer": "sonny-angel-usa",
+          "url": "https://sonnyangelusa.com/products/minifigure-marine-series-2019"
+        },
+        {
+          "retailer": "friends-nyc",
+          "url": "https://friendsnyc.com/products/sonny-angel-doll-marine-blind-box"
+        }
+      ]
+    },
+    {
+      "slug": "sonny-angel-snack-series",
+      "name": "Sonny Angel Snack Series",
+      "brand": "sonny-angel",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0515/8394/2805/files/products_thumbnail_snack-series_01.png?v=1751916639",
+      "msrpCents": 1225,
+      "listings": [
+        {
+          "retailer": "sonny-angel-usa",
+          "url": "https://sonnyangelusa.com/products/snack-series"
+        },
+        {
+          "retailer": "friends-nyc",
+          "url": "https://friendsnyc.com/products/sonny-angel-snack-series"
+        }
+      ]
+    },
+    {
+      "slug": "sonny-angel-hippers-harvest-series",
+      "name": "Sonny Angel HIPPERS Harvest Series",
+      "brand": "sonny-angel",
+      "imageUrl": "https://cdn.shopify.com/s/files/1/0515/8394/2805/products/products_thumbnail_HIPPERS-Harvest-Series_01_png.png?v=1667835804",
+      "msrpCents": 1375,
+      "listings": [
+        {
+          "retailer": "sonny-angel-usa",
+          "url": "https://sonnyangelusa.com/products/hippers-harvest-series"
+        },
+        {
+          "retailer": "friends-nyc",
+          "url": "https://friendsnyc.com/products/sonny-angel-hippers-harvest"
+        }
+      ]
+    }
+  ]
+}

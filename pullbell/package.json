@@ -1,0 +1,17 @@
+{
+  "name": "pullbell",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "db:push": "npm run push -w @pullbell/db",
+    "db:seed": "npm run seed -w @pullbell/db",
+    "dev:web": "npm run dev -w web",
+    "dev:mobile": "npm run start -w mobile",
+    "monitor": "npm run start -w @pullbell/monitor",
+    "test": "npm test -w @pullbell/monitor",
+    "typecheck": "npm run typecheck --workspaces --if-present"
+  }
+}

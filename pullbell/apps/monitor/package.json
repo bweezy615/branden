@@ -1,0 +1,23 @@
+{
+  "name": "@pullbell/monitor",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "tsx --env-file-if-exists=.env src/index.ts",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@pullbell/db": "*",
+    "drizzle-orm": "^0.45.4",
+    "expo-server-sdk": "^8.0.0",
+    "web-push": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/web-push": "^3.6.4",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.3"
+  }
+}
