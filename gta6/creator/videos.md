@@ -1,3 +1,5 @@
+> **Superseded Nov 14, 2026.** The pre-launch plan below assumed the tracker app and an owner face-cam channel. Current plan: `gta6/OPS.md` (Strategy decision), `gta6/creator/queue.md` and `gta6/creator/scripts/`. Kept as raw material only.
+
 # {BRAND} — First 10 Videos (Nov 12 – Nov 30, 2026)
 
 Strategy source: `reports/GTA 6 launch money plan.md` (red-lines table, Wk 0–3 plan). Facts checked Nov 11, 2026; see **Sources** at the bottom.
