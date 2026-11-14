@@ -1,0 +1,8 @@
+# Raw footage and renders never go in git
+*.mp4
+*.mov
+*.mkv
+*.m4a
+*.wav
+*.webm
+__pycache__/

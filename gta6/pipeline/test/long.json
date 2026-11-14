@@ -1,0 +1,14 @@
+{
+  "name": "test-long",
+  "format": "long",
+  "segments": [
+    {"src": "sample_a.mp4", "in": 2.0, "out": 8.0},
+    {"src": "sample_b.mp4", "in": 0.0, "out": 5.0}
+  ],
+  "voiceover": "sample_vo.m4a",
+  "captions": [
+    {"start": 0.0, "end": 3.0, "text": "Settings to change first"},
+    {"start": 3.0, "end": 6.0, "text": "Step 1: Camera > Motion Blur > Off"},
+    {"start": 6.0, "end": 11.0, "text": "Two-line caption test\nsecond line"}
+  ]
+}

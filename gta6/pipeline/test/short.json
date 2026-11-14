@@ -1,0 +1,13 @@
+{
+  "name": "test-short",
+  "format": "short",
+  "segments": [
+    {"src": "sample_a.mp4", "in": 0.0, "out": 6.0},
+    {"src": "sample_b.mp4", "in": 4.0, "out": 9.0}
+  ],
+  "voiceover": null,
+  "captions": [
+    {"start": 0.0, "end": 4.0, "text": "TURN THIS OFF\nFIRST"},
+    {"start": 4.0, "end": 11.0, "text": "Motion blur: Off"}
+  ]
+}
