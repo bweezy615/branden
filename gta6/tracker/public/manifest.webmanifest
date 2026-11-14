@@ -1,9 +1,0 @@
-{
-  "name": "Glovebox: GTA VI Tracker",
-  "short_name": "Glovebox",
-  "start_url": "/",
-  "display": "standalone",
-  "background_color": "#120a1f",
-  "theme_color": "#120a1f",
-  "icons": [{ "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }]
-}
