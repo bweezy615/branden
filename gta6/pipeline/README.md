@@ -35,6 +35,18 @@ Every render: segments trimmed and joined (mixed resolutions/frame rates are sca
 ## Test
 `gta6/pipeline/test/run_test.sh <work_dir>` builds synthetic clips (1080p60 and 1440p30 test patterns, tones as game audio and voiceover), renders one long and one short, and checks size, duration and loudness (within ±1.5 LU of -14). Last run: Nov 14, 2026, PASS (long 1920x1080 11.0 s -13.2 LUFS; short 1080x1920 11.0 s -13.2 LUFS).
 
-## Next (once Google credentials exist)
-- `drive.py`: list new clips in the intake folder, download them, upload renders to the output folder.
-- `youtube.py`: upload as **private** with title/description/tags, `selfDeclaredMadeForKids=false`, `containsSyntheticMedia=false`; owners flip to public after a quick check.
+## Voice memo splitter
+`python3 gta6/pipeline/voice.py <memo> <script.md> <out_dir>` cuts the owner's memo into one file per `##` section of the script, using pauses: 1.5–4 s = next section, 4 s+ = retake (the take before it is dropped), a sub-1-second chunk = a spoken "skip". If the chunk count doesn't match the script, it stops with the chunk timings instead of guessing. Test: `gta6/pipeline/test/run_voice_test.sh <work_dir>` (Nov 15: PASS).
+
+## Google (Drive + YouTube)
+`gta6/pipeline/google_api.py` with `GOOGLE_CLIENT_ID/SECRET/REFRESH_TOKEN` set (SETUP.md Part E):
+- `pull <dir>`: download new files from Drive `Clips IN` (skips files already downloaded at full size).
+- `push <dir> <name>`: upload a folder of renders to `Renders OUT/<name>`.
+- `upload <video> <meta.json>`: YouTube resumable upload, **always private**, made-for-kids false, synthetic-media false.
+- `stats`: channel totals + last-90-day views, watch minutes, subs gained (for the Scorecard).
+
+Status Nov 15: written against Google's REST docs; the token endpoint answers (bad test credentials → 401 as expected). **Not yet run against a real account**; first real run happens the day credentials are added.
+
+## Still to build
+- Thumbnail maker (frame + big text, Inter Black).
+- Timer overlay and speed-up option for v003.

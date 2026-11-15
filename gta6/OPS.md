@@ -38,7 +38,8 @@ _Decided Nov 14, 2026 (first supervisor run). Revisit at the Dec 6 and Jan 3 che
 - Intake location for raw clips: **Google Drive `Clips IN` folder on a business Google account**, designed; owners haven't set it up yet (`gta6/SETUP.md`).
 - Publishing: agent uploads to YouTube as private via API once credentials exist; TikTok posted by hand.
 - Brand/channel name: **not chosen**; 5 options below.
-- Pipeline: `gta6/pipeline/render.py` works (long 16:9 + 9:16 Shorts, captions, voiceover mix, -14 LUFS); tested on synthetic clips Nov 14. Drive and YouTube API scripts come next, once credentials exist.
+- Pipeline: `render.py` (long + Shorts, captions, voiceover mix, -14 LUFS) and `voice.py` (splits voice memo by pauses) tested on synthetic media. `google_api.py` (Drive pull/push, private YouTube upload, stats) written Nov 15, untested until credentials exist.
+- Credentials (`GOOGLE_*` env vars): **not added yet**.
 - Scripts ready: v001 settings, v002 beginner tips, v003 map drive (`gta6/creator/scripts/`). Queue: `gta6/creator/queue.md`.
 
 ## Owners' checklist (only humans can do these)
@@ -67,7 +68,9 @@ Do them in this order. Full click-by-click steps: **`gta6/SETUP.md`**.
 - [x] First run: clip intake and publishing setup researched; steps in `gta6/SETUP.md` (Nov 14).
 - [x] First run: 5 channel names proposed (Nov 14).
 - [x] Build the `ffmpeg` render pipeline, tested on synthetic clips (Nov 14).
-- [ ] When credentials exist: `drive.py` (intake/output), `youtube.py` (private upload + analytics), thumbnail maker, voice-memo splitter (silence detection at the 2-second pauses).
+- [x] Voice-memo splitter and Google API client written (Nov 15).
+- [ ] First run with real credentials: `google_api.py stats`, then a test upload of a 10 s private clip; fix anything that fails.
+- [ ] Thumbnail maker; timer overlay for v003.
 - [x] First 3 scripts + queue written (Nov 14). Ongoing: keep at least 3 scripts ready in `gta6/creator/scripts/` and a topic queue in `gta6/creator/queue.md`.
 - [ ] Daily: Rockstar news check. Plan triggers: online mode, PC date, creator platform.
 - [ ] Dec 6 checkpoint report.
@@ -81,3 +84,4 @@ Do them in this order. Full click-by-click steps: **`gta6/SETUP.md`**.
 - Nov 11: Tracker app built; creator kit drafted; launch facts checked against Rockstar's pages.
 - Nov 14: Owners dropped the tracker and asked for an autonomous content business. Tracker removed. Supervisor playbook written; supervisor agent hired with a daily run.
 - Nov 14 (supervisor run 1): Strategy decided (owner-voiced long-form guides + Shorts funnel + TikTok; YPP before Feb 1 is the goal). Intake/publishing designed around a business Google account (Drive + YouTube API, private uploads). 5 names proposed. Queue + scripts v001–v003 written. Render pipeline built and tested. News: launch still Nov 19, pre-load live since Nov 10; nothing plan-changing.
+- Nov 15 (run 2): No owner input yet (no name pick, no credentials). News: no Rockstar post today; launch Nov 19 confirmed; Rockstar will release a free printable map Nov 19 (don't use it in thumbnails; it's Rockstar art). Built `voice.py` (tested) and `google_api.py` (awaiting credentials); SETUP.md voice rules updated (5 s pause = retake, say "skip").

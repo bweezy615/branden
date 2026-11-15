@@ -53,7 +53,10 @@ Why this design: the cloud agent can reach Google's APIs (`www.googleapis.com`, 
 2. Open the **Google Drive** app → `Clips IN` → **+** → Upload → select the clips (and your voice memo, below).
 3. Capture in the order of the video's **clip shopping list**, and put the video number in front of the voice memo's name, e.g. `v001-vo.m4a`. Don't rename the game clips; the agent sorts them by time and looks at frames.
 
-**Voiceover (about 10 min per long video):** open the final script in this repo (`gta6/creator/scripts/`), go somewhere quiet, and read it into your phone's voice recorder (iPhone Voice Memos or any Android recorder). Fill in the `{FILL: …}` blanks with what you saw in your game. **Pause for a full 2 seconds between sections** (the `##` headings). The agent uses the pauses to line your voice up with the footage. Fluffs are fine: pause 2 seconds and say the sentence again; the agent keeps the last take.
+**Voiceover (about 10 min per long video):** open the final script in this repo (`gta6/creator/scripts/`), go somewhere quiet, and read it into your phone's voice recorder (iPhone Voice Memos or any Android recorder). Fill in the `{FILL: …}` blanks with what you saw in your game. **Pause for a full 2 seconds between sections** (the `##` headings). The agent uses the pauses to line your voice up with the footage. Three rules:
+- Small stumbles: just keep going.
+- Fluffed a section badly? **Pause 5 seconds**, then restart that section from its first sentence. The agent drops the take before a 5-second pause.
+- Skipping a section (the game doesn't have that setting, or no run 3)? Say **"skip"** in its place, with the usual 2-second pauses either side.
 
 ## Part E: Give the agent access (25–30 min, once)
 
