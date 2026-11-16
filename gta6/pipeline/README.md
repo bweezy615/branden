@@ -8,10 +8,10 @@ python3 gta6/pipeline/render.py <edit.json> <clips_dir> <out_dir>
 
 | Format | Output | Layout |
 |---|---|---|
-| `long` | 1920x1080, 60 fps, H.264 + AAC | Gameplay full frame, captions in the lower third |
-| `short` | 1080x1920, 60 fps, max 180 s | Full 16:9 gameplay centred over a blurred copy of itself, big captions in the upper third |
+| `long` | 1920x1080, 30 fps, H.264 + AAC | Gameplay full frame, captions in the lower third |
+| `short` | 1080x1920, 30 fps, max 180 s | Full 16:9 gameplay centred over a blurred copy of itself, big captions in the upper third |
 
-Every render: segments trimmed and joined (mixed resolutions/frame rates are scaled to 1080p60), captions burned in (Inter Bold, white with black outline), game audio dropped 14 dB under the owner's voiceover when there is one, then **two-pass loudness normalization to -14 LUFS** (YouTube's playback target).
+Every render: segments trimmed and joined (mixed resolutions/frame rates are scaled to 1080p30, the console frame rate Rockstar has stated; re-check on the first real clip), captions burned in (Inter Bold, white with black outline), game audio dropped 14 dB under the owner's voiceover when there is one, then **two-pass loudness normalization to -14 LUFS** (YouTube's playback target).
 
 ## Edit list
 

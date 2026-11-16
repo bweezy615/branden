@@ -42,7 +42,7 @@ Next, {FILL: setting}. {FILL: what it does in one sentence}. I turned it {FILL: 
 *(Repeat this pattern for each Display setting you'd change. Two or three is plenty.)*
 
 ## Graphics or performance mode (2:00)
-*(Skip this whole section if the game has no mode choice.)*
+*(Rockstar has said the console version runs at 30 fps, and no 60 fps performance mode is confirmed (VGC, Nov 2026). If there's no mode choice, say "skip" here. If there is one, it's the most-searched setting of launch week: tell the agent in chat the day you see it, and this section becomes its own Short first.)*
 This one matters most. The game gives you {FILL: names of the modes}. Here's the same spot in both. In {FILL: mode A} it {FILL: what you noticed: sharper, smoother, more stable}. In {FILL: mode B} it {FILL: what you noticed}. For driving and shooting I'd pick {FILL: your pick}; for photo mode and slow exploring, {FILL: other}.
 
 ## Camera (3:15)

@@ -12,7 +12,7 @@ Edit list format (see README.md):
   "captions": [{"start": 0.0, "end": 2.5, "text": "..."}, ...]   # output timeline
 }
 
-Long  -> 1920x1080, 60 fps.  Short -> 1080x1920, 60 fps, gameplay fitted
+Long  -> 1920x1080, 30 fps.  Short -> 1080x1920, 30 fps, gameplay fitted
 over a blurred copy of itself. Both: burned-in captions, game audio ducked
 under the voiceover, loudness normalized to -14 LUFS (two-pass), H.264 + AAC.
 """
@@ -21,7 +21,9 @@ import subprocess
 import sys
 from pathlib import Path
 
-FPS = 60
+# Rockstar says the console build runs at 30 fps (VGC/TechRadar, Nov 2026); rendering 60
+# would only duplicate frames. Re-check against the first real clip's frame rate.
+FPS = 30
 LUFS = -14
 GAME_UNDER_VO_DB = -14  # game audio level while a voiceover track is present
 SIZES = {"long": (1920, 1080), "short": (1080, 1920)}
@@ -88,7 +90,7 @@ def build_command(edit: dict, clips: Path, out_file: Path, ass_file: Path) -> li
         if not src.is_file():
             raise FileNotFoundError(src)
         inputs += ["-ss", str(s["in"]), "-to", str(s["out"]), "-i", str(src)]
-        # Every segment -> 1920x1080 @ 60 fps, stereo 48 kHz, so concat accepts them.
+        # Every segment -> 1920x1080 @ FPS, stereo 48 kHz, so concat accepts them.
         filters.append(
             f"[{i}:v]scale=1920:1080:force_original_aspect_ratio=decrease,"
             f"pad=1920:1080:(ow-iw)/2:(oh-ih)/2,fps={FPS},setsar=1,setpts=PTS-STARTPTS[v{i}]"
