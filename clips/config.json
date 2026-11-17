@@ -1,0 +1,8 @@
+{
+  "brand": "ChatClipped",
+  "max_clips_per_run": 6,
+  "min_clip_views": 200,
+  "lookback_hours": 36,
+  "hashtags": ["#chatclipped", "#streamerclips", "#twitch"],
+  "streamers": []
+}

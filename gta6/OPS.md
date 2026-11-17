@@ -45,17 +45,18 @@ _Decided Nov 14, 2026 (first supervisor run). Revisit at the Dec 6 and Jan 3 che
 - Scripts ready: v001 settings, v002 beginner tips, v003 map drive (`gta6/creator/scripts/`). Queue: `gta6/creator/queue.md`.
 
 ## Owners' checklist (only humans can do these)
-Clips plan (`clips/PLAN.md`, "Week 1"). In order:
-1. **Pick the name** (recommended: **Chat Clipped**, @chatclipped). Reply in chat.
-2. **Create the accounts** under that name: business Google account → YouTube (and verify its phone number), TikTok, Instagram (Professional/Creator account), X.
-3. **Sign up for Whop Content Rewards**, connect and verify all four accounts.
-4. **Send the agent 10–20 open campaigns** (screenshot or list); the agent picks 3–5 to join.
-5. **Drive folders** `Clips IN` / `Renders OUT` (`gta6/SETUP.md` Part B).
-6. Daily: drop sources + timestamps in `Clips IN`; post finished clips to all four platforms; submit links in Whop.
-7. Week 2: Google access for the agent (`gta6/SETUP.md` Part E).
+ChatClipped, see `clips/SETUP.md`:
+1. **Part A**: Facebook Page + Instagram @chatclipped (professional), linked.
+2. **Part B**: Whop Content Rewards, connect Instagram; send the agent 10–20 open streamer campaigns.
+3. **Parts C–D**: Twitch app keys, Meta app + Page token.
+4. **Part E**: start a session on environment `branden-chatclipped`, add the 5 keys, say "keys added".
+5. Daily: submit links from `clips/whop_todo.md` in Whop.
 
 ## Supervisor's queue
-- [ ] **Clips (current):** vertical facecam layout in `render.py`; hook text; clip log `clips/log.csv`; campaign shortlist once owners send campaigns; later: speech-to-text captions and highlight finder (each needs a network host approved by the owners).
+- [x] ChatClipped pipeline written (Nov 17): `clips/twitch.py`, `transcribe.py`, `render_clip.py` (tested), `meta.py`, `run.py`.
+- [ ] On the new environment: install yt-dlp + faster-whisper, first real end-to-end test once keys exist; owners review 2 renders before the first post.
+- [ ] Pick campaigns from the owners' list; fill `clips/config.json` (facecam box per streamer from a frame).
+- [ ] Look into automating Whop submissions (user-OAuth bounty submissions API).
 - GTA VI guide items below are paused.
 - [x] First run: research and record the **Strategy decision** (Nov 14).
 - [x] First run: clip intake and publishing setup researched; steps in `gta6/SETUP.md` (Nov 14).
@@ -80,3 +81,4 @@ Clips plan (`clips/PLAN.md`, "Week 1"). In order:
 - Nov 15 (run 2): No owner input yet (no name pick, no credentials). News: no Rockstar post today; launch Nov 19 confirmed; Rockstar will release a free printable map Nov 19 (don't use it in thumbnails; it's Rockstar art). Built `voice.py` (tested) and `google_api.py` (awaiting credentials); SETUP.md voice rules updated (5 s pause = retake, say "skip").
 - Nov 16 (run 3): Still no owner input; 3 days to launch, so name + Google access (SETUP.md Parts A–E) is now urgent. News: Rockstar co-director says the console build runs at **30 fps**; no 60 fps mode confirmed ([VGC](https://www.videogameschronicle.com/news/gta-6-is-confirmed-to-be-30-frames-per-second-at-launch-no-performance-mode-at-launch/), [TechRadar](https://techradar.com/gaming/gta-6-will-launch-at-30fps-on-ps5-and-xbox-for-now-confirms-rockstar-but-while-60fps-is-reportedly-possible-its-a-40fps-mode-we-really-want-to-see)). Changes: renders now 30 fps (no duplicated frames); v001's graphics-mode section notes this. If a performance mode does exist at launch, it becomes the first Short.
 - Nov 17: Owners pivoted to a streamer clips channel. Researched clip monetization (Whop Content Rewards ~$1–3 per 1K views, no follower minimum; YouTube reused-content risk; TikTok rewards exclude unoriginal clips). Checked names: Chat Clipped, Stream Sifter, Clipsmith, Chat Replay Club have free @handles and domains. Plan in `clips/PLAN.md`.
+- Nov 17 (evening): Owners chose ChatClipped; platforms Instagram + Facebook + Whop; want autonomy. Researched $1M+ clipping businesses (`clips/RESEARCH.md`): the big money is the broker model. Built the clip pipeline; render tested. Created environment `branden-chatclipped` (Meta, Twitch, Whop, Hugging Face, Google hosts); this session couldn't move onto it.
