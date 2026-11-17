@@ -16,16 +16,24 @@ Updated Nov 17, 2026. Owners chose the name **ChatClipped** (@chatclipped) and t
 5. **Disclose** paid campaigns where the campaign or platform asks (#ad / paid-partnership label); the campaign's required tags go in config.
 6. **No view-botting or engagement buying, ever.** Whop bans permanently and takes the losses from earnings.
 
-## What runs automatically (built Nov 17)
-| Step | File | Status |
+## What runs automatically
+Software choice and the GitHub comparison: `clips/TOOLS.md`. Each day the supervisor (Claude, in its own cloud session on environment `branden-chatclipped`, daily at 7:41 UTC) runs:
+
+1. `python3 clips/run.py plan <dir>`: most-viewed Twitch clips (last 36 h) of each permitted streamer → download → word-level transcript → auto facecam box → `plan.json`.
+2. **The supervisor reviews `plan.json`:** skips rule-breakers (music, story spoilers, hateful/sexual content, weak moments) and writes the hook and caption.
+3. `python3 clips/run.py make <dir> --post`: render 1080x1920 (facecam over gameplay, hook, captions, @chatclipped) → post Instagram + Facebook Reels → log → `clips/whop_todo.md`.
+4. Reads Instagram views into the scorecard, drops weak streamers/campaigns, reports.
+
+| Part | File | Tested |
 |---|---|---|
-| Find the most-viewed clips of each permitted streamer in the last 36 h (Twitch API) | `clips/twitch.py` | Written; needs Twitch keys + new environment |
-| Download them | `clips/twitch.py` (yt-dlp) | Written; same |
-| Word-by-word transcript (faster-whisper, free, runs locally) | `clips/transcribe.py` | Written; needs the package install + model download |
-| Render vertical 1080x1920: facecam on top, gameplay below (or full frame over blur), hook, captions, tag, -14 LUFS | `clips/render_clip.py` | **Tested** on synthetic clips |
-| Post Instagram Reel + Facebook Reel with caption, credit and campaign tags | `clips/meta.py` | Written to Meta's current docs; needs Meta keys |
-| Log every clip (dedupe + scorecard); list links to submit in Whop | `clips/run.py` → `clips/log.csv`, `clips/whop_todo.md` | Written |
-| Daily: run, read Instagram views, pick tomorrow's streamers, report | supervisor daily run | Moves to a session on the new environment once keys exist |
+| Clip finder + downloader | `clips/twitch.py` | Needs Twitch keys (live test on the supervisor environment) |
+| Transcript | `clips/transcribe.py` | Needs package install (supervisor environment) |
+| Facecam finder | `clips/facecam.py` | Needs OpenCV install (supervisor environment) |
+| Vertical render | `clips/render_clip.py` | **Yes** (`clips/test/run_test.sh`, Nov 17) |
+| Plan/make orchestration, permission check, skip handling | `clips/run.py` | **Make step yes**; plan step live |
+| Instagram + Facebook posting | `clips/meta.py` | Needs Meta keys |
+
+**Warm-up:** brand-new accounts that post many API videos on day one risk being flagged as spam, so we start at **3 clips/day** for the first week (`max_clips_per_run` in config) and raise it to 6, then 10. This is a precaution, not a published Meta rule.
 
 **The one manual step left: submitting links in Whop.** Whop's submission API needs a logged-in user's permission (it can't be done with an account key), and it isn't confirmed that Content Rewards uses it. Until then, owners paste the day's links from `clips/whop_todo.md` into Whop (about 2 minutes). Submit soon after posting: views count from when the link is tracked.
 
@@ -36,8 +44,8 @@ Updated Nov 17, 2026. Owners chose the name **ChatClipped** (@chatclipped) and t
 ## Timeline
 | When | What |
 |---|---|
-| **Tonight** | Owners: SETUP Parts A–B (accounts, Whop) and send the agent 10–20 campaigns. |
-| **Next 1–2 days** | Owners: SETUP Parts C–E (keys). Agent: test run → 2 renders for owner review → first post → daily autopilot at **6 clips/day**. |
+| **Tomorrow (Nov 18)** | Owners: all of `clips/SETUP.md` (about 60 min) and send campaigns. Supervisor: same day, fills `config.json`, runs plan + make, sends 2 renders for review; on the owners' OK, first posts. |
+| Nov 19 onward | Autopilot at 3/day (week 1), then 6, then 10. Owners: 2–5 min/day submitting Whop links. |
 | Week 2 | 8–10 clips/day across 3–5 campaigns. Drop campaigns under ~$1 per 1,000 views or with rejected clips; add new ones. |
 | Dec 6 checkpoint | Earnings per clip, per campaign, per hour of owner time → keep, change or stop. |
 | Month 2 | If clips average 10K+ views: one-page media kit with our numbers, then outreach to 50 small streamers, artists and apps offering view campaigns. That's the broker step. |

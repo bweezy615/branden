@@ -1,18 +1,19 @@
 #!/usr/bin/env python3
-"""ChatClipped daily run: find -> download -> transcribe -> render -> (post) -> log.
+"""ChatClipped daily run, in two steps so the supervisor agent can apply judgment between them.
 
-  python3 clips/run.py <work_dir>          # render only, for review
-  python3 clips/run.py <work_dir> --post   # also publish to Instagram + Facebook
+  python3 clips/run.py plan <work_dir>            # find + download + transcribe + detect facecam
+  #   -> <work_dir>/plan.json. The supervisor reads each transcript, sets "skip": true for anything
+  #      that breaks the rules (music, story spoilers, hateful/sexual content, a weak moment)
+  #      and rewrites "hook" (the on-screen line for the first 3 s) and "caption_title".
+  python3 clips/run.py make <work_dir> [--post]   # render every non-skipped clip; --post publishes
+  #   to Instagram + Facebook, logs to clips/log.csv, refreshes clips/whop_todo.md
 
-Only streamers listed in clips/config.json are ever clipped. A streamer goes in that list
-only when we have permission: a Whop campaign or the streamer's own clipping program.
-Each entry:
+Only streamers listed in clips/config.json are ever clipped, and each needs a "campaign":
+proof that we're allowed to (a Whop campaign or the streamer's own clipping program).
+Streamer entry:
   {"twitch": "login", "name": "Display Name", "campaign": "Whop campaign URL or program name",
-   "facecam": [x, y, w, h] or null,        # fractions of the 16:9 frame; null = blurred-fit layout
-   "tags": ["#required", "#campaign", "#tags"], "caption_note": "text the campaign requires" }
-
-Every clip is appended to clips/log.csv (dedupe + scorecard). Links that still need submitting
-to Whop are listed in clips/whop_todo.md until Whop submission is automated.
+   "facecam": "auto" | [x, y, w, h] | null,   # auto-detect, fixed fractions, or no facecam layout
+   "tags": ["#campaign", "#tags"], "caption_note": "text the campaign requires"}
 """
 import csv
 import json
@@ -23,12 +24,11 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
-from render_clip import render  # noqa: E402
 
 CONFIG = HERE / "config.json"
 LOG = HERE / "log.csv"
 WHOP_TODO = HERE / "whop_todo.md"
-FIELDS = ["date", "streamer", "campaign", "clip_id", "clip_url", "clip_views", "title",
+FIELDS = ["date", "streamer", "campaign", "clip_id", "clip_url", "clip_views", "title", "hook",
           "ig_media_id", "ig_url", "fb_video_id", "fb_url", "whop_submitted"]
 
 
@@ -60,73 +60,92 @@ def append_log(row: dict) -> None:
 
 
 def hook_from_title(title: str) -> str:
-    """Twitch clip titles are written by viewers; tidy one into on-screen hook text."""
+    """Default hook from the viewer-written Twitch clip title; the supervisor usually rewrites it."""
     t = re.sub(r"(?i)\b(clip|twitch)\b", "", title)
     t = re.sub(r"\s+", " ", t).strip(" -|:")
     return (t[:57] + "...") if len(t) > 60 else t
 
 
 def caption(streamer: dict, title: str, cfg: dict) -> str:
-    parts = [title.strip(), "",
-             f"Credit: {streamer['name']} (twitch.tv/{streamer['twitch']})"]
+    parts = [title.strip(), "", f"Credit: {streamer['name']} (twitch.tv/{streamer['twitch']})"]
     if streamer.get("caption_note"):
         parts.append(streamer["caption_note"])
     parts.append(" ".join(streamer.get("tags", []) + cfg["hashtags"]))
     return "\n".join(parts)
 
 
-def pick_clips(cfg: dict) -> list[tuple[dict, dict]]:
-    from twitch import Twitch
+def plan(work: Path, cfg: dict) -> Path:
+    from facecam import detect
+    from transcribe import transcribe
+    from twitch import Twitch, download
+
     tw, done, picks = Twitch(), logged_ids(), []
     for s in cfg["streamers"]:
         for c in tw.top_clips(s["twitch"], cfg["lookback_hours"]):
             if c["id"] not in done and c["view_count"] >= cfg["min_clip_views"]:
                 picks.append((s, c))
     picks.sort(key=lambda sc: sc[1]["view_count"], reverse=True)
-    return picks[:cfg["max_clips_per_run"]]
+
+    items = []
+    for s, c in picks[:cfg["max_clips_per_run"]]:
+        src = download(c["url"], work / "src" / f"{c['id']}.mp4")
+        words = transcribe(src)
+        cam = s.get("facecam", "auto")
+        items.append({
+            "clip_id": c["id"], "streamer": s["twitch"], "clip_url": c["url"], "clip_views": c["view_count"],
+            "title": c["title"], "src": str(src), "words": words,
+            "transcript": " ".join(w["word"].strip() for w in words),
+            "facecam": list(detect(src) or []) if cam == "auto" else cam,
+            "hook": hook_from_title(c["title"]), "caption_title": c["title"], "skip": False,
+        })
+    out = work / "plan.json"
+    out.write_text(json.dumps(items, indent=1) + "\n")
+    return out
+
+
+def make(work: Path, cfg: dict, post: bool) -> None:
+    from render_clip import render
+    if post:
+        from meta import post_facebook, post_instagram
+    streamers = {s["twitch"]: s for s in cfg["streamers"]}
+    for it in json.loads((work / "plan.json").read_text()):
+        if it["skip"]:
+            continue
+        s = streamers[it["streamer"]]  # KeyError = not permitted: stop
+        out = render(Path(it["src"]), it["words"], it["hook"], work / "out" / f"{it['clip_id']}.mp4",
+                     tuple(it["facecam"]) if it["facecam"] else None)
+        row = {"date": str(date.today()), "streamer": s["twitch"], "campaign": s["campaign"],
+               "clip_id": it["clip_id"], "clip_url": it["clip_url"], "clip_views": it["clip_views"],
+               "title": it["title"], "hook": it["hook"], "ig_media_id": "", "ig_url": "",
+               "fb_video_id": "", "fb_url": "", "whop_submitted": "no"}
+        if post:  # review-only runs don't log, so the same clips can still be posted
+            text = caption(s, it["caption_title"], cfg)
+            row["ig_media_id"], row["ig_url"] = post_instagram(out, text)
+            row["fb_video_id"], row["fb_url"] = post_facebook(out, text)
+            append_log(row)
+        print(f"{it['clip_id']}\t{out}\t{row['ig_url']}")
+    if post:
+        write_whop_todo()
 
 
 def write_whop_todo() -> None:
     with LOG.open() as fh:
-        pending = [r for r in csv.DictReader(fh) if r["whop_submitted"] != "yes" and (r["ig_url"] or r["fb_url"])]
+        pending = [r for r in csv.DictReader(fh) if r["whop_submitted"] != "yes" and r["ig_url"]]
     lines = ["# Links to submit in Whop Content Rewards", "",
-             "Submit each link in its campaign right away (views count once the link is tracked). "
-             "Then tell the agent, or mark `whop_submitted` = yes in clips/log.csv.", ""]
-    for r in pending:
-        lines.append(f"- [{r['campaign']}] {r['streamer']}: {r['ig_url']}  (Facebook: {r['fb_url'] or 'n/a'})")
+             "Submit each Instagram link in its campaign soon after posting (views count once the link is "
+             "tracked). Then tell the agent, or set `whop_submitted` to yes in clips/log.csv.", ""]
+    lines += [f"- [{r['campaign']}] {r['streamer']}: {r['ig_url']}" for r in pending]
     WHOP_TODO.write_text("\n".join(lines) + "\n")
 
 
 def main() -> None:
-    args = sys.argv[1:]
-    if not args or len(args) > 2 or (len(args) == 2 and args[1] != "--post"):
+    a = sys.argv[1:]
+    if len(a) == 2 and a[0] == "plan":
+        print(plan(Path(a[1]), load_config()))
+    elif a[:1] == ["make"] and len(a) in (2, 3) and (len(a) == 2 or a[2] == "--post"):
+        make(Path(a[1]), load_config(), len(a) == 3)
+    else:
         sys.exit(__doc__)
-    work, post = Path(args[0]), len(args) == 2
-    cfg = load_config()
-
-    from transcribe import transcribe
-    from twitch import download
-    if post:
-        from meta import post_facebook, post_instagram
-
-    for streamer, clip in pick_clips(cfg):
-        cid = clip["id"]
-        src = download(clip["url"], work / "src" / f"{cid}.mp4")
-        words = transcribe(src)
-        (work / "src" / f"{cid}.words.json").write_text(json.dumps(words))
-        out = render(src, words, hook_from_title(clip["title"]), work / "out" / f"{cid}.mp4",
-                     tuple(streamer["facecam"]) if streamer.get("facecam") else None)
-        row = {"date": str(date.today()), "streamer": streamer["twitch"], "campaign": streamer["campaign"],
-               "clip_id": cid, "clip_url": clip["url"], "clip_views": clip["view_count"], "title": clip["title"],
-               "ig_media_id": "", "ig_url": "", "fb_video_id": "", "fb_url": "", "whop_submitted": "no"}
-        if post:  # review-only runs don't log, so the same clips can be posted later
-            text = caption(streamer, clip["title"], cfg)
-            row["ig_media_id"], row["ig_url"] = post_instagram(out, text)
-            row["fb_video_id"], row["fb_url"] = post_facebook(out, text)
-            append_log(row)
-        print(f"{cid}\t{out}\t{row['ig_url']}")
-    if post:
-        write_whop_todo()
 
 
 if __name__ == "__main__":

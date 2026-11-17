@@ -1,0 +1,4 @@
+requests
+yt-dlp
+faster-whisper
+opencv-python-headless
