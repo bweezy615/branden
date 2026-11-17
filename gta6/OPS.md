@@ -2,6 +2,8 @@
 
 Single source of truth. The supervisor agent reads this first every run, works its queue, then updates **Status**, **Scorecard** and **Log** and pushes to `claude/clever-tesla-lza1gp`. Playbook: `.claude/skills/gta6-business/SKILL.md`.
 
+> **Nov 17, 2026: owners pivoted.** The main business is now a **streamer clips channel** paid through clipping campaigns (Whop Content Rewards). Plan and name options: **`clips/PLAN.md`**. The GTA VI guide strategy below is paused, not deleted. The owners' checklist and supervisor queue below now follow the clips plan.
+
 ## Key dates
 - Unlock: **midnight local time, Thu Nov 19, 2026**, PS5 and Xbox Series X|S. Install up to 212 GB; pre-load opened Nov 10 (Rockstar).
 - **Feb 1, 2027**: YouTube Partner Program bar doubles for new applicants. Qualify and apply before then.
@@ -43,27 +45,18 @@ _Decided Nov 14, 2026 (first supervisor run). Revisit at the Dec 6 and Jan 3 che
 - Scripts ready: v001 settings, v002 beginner tips, v003 map drive (`gta6/creator/scripts/`). Queue: `gta6/creator/queue.md`.
 
 ## Owners' checklist (only humans can do these)
-Do them in this order. Full click-by-click steps: **`gta6/SETUP.md`**.
-
-1. **Pick the channel name** (5 min). Options, all checked Nov 14: .com unregistered (registrar lookup) and the YouTube @handle URL returns "not found" (a 404 means no channel uses it; confirm in YouTube's handle picker). None contain a red-line word.
-
-   | # | Name | @handle | .com | Note |
-   |---|---|---|---|---|
-   | 1 | **Map Marker Guides** (recommended) | @mapmarkerguides | mapmarkerguides.com | Says exactly what the channel is; works for any open-world game after GTA VI; no known brand conflict |
-   | 2 | Pin Drop Guides | @pindropguides | pindropguides.com | Catchiest, but "Pindrop" is a known voice-security company; different field, small confusion risk |
-   | 3 | Quicksave Guides | @quicksaveguides | quicksaveguides.com | Gamer-friendly; generic word others use |
-   | 4 | Salt Air Guides | @saltairguides | saltairguides.com | Coastal mood that fits the setting without naming it |
-   | 5 | Night Drive Guides | @nightdriveguides | nightdriveguides.com | Atmosphere; slightly narrower (driving) |
-
-   Don't buy the domain yet; we don't need a site. Reply in chat with the pick.
-2. **Part A of SETUP.md: business Google account + YouTube channel + phone verification** (15 min). Paste the channel link in chat.
-3. **Parts B–C: Drive folders and console capture settings** (10 min).
-4. **Part E: give the agent access** (25–30 min, once). Ideally before Nov 19 so launch-day clips flow automatically.
-5. **Nov 19 onward, daily: play, capture from the shopping list, transfer clips + voice memo to `Clips IN`** (Part D, ~20 min), then **check and publish** (Part F, ~7 min).
-6. **TikTok account** (optional, 5 min): create it under the same name; post the daily `-tiktok.mp4` from `Renders OUT`.
-7. **Later, when the agent asks:** Amazon Associates, beehiiv, YPP application. You do tax and payout forms.
+Clips plan (`clips/PLAN.md`, "Week 1"). In order:
+1. **Pick the name** (recommended: **Chat Clipped**, @chatclipped). Reply in chat.
+2. **Create the accounts** under that name: business Google account → YouTube (and verify its phone number), TikTok, Instagram (Professional/Creator account), X.
+3. **Sign up for Whop Content Rewards**, connect and verify all four accounts.
+4. **Send the agent 10–20 open campaigns** (screenshot or list); the agent picks 3–5 to join.
+5. **Drive folders** `Clips IN` / `Renders OUT` (`gta6/SETUP.md` Part B).
+6. Daily: drop sources + timestamps in `Clips IN`; post finished clips to all four platforms; submit links in Whop.
+7. Week 2: Google access for the agent (`gta6/SETUP.md` Part E).
 
 ## Supervisor's queue
+- [ ] **Clips (current):** vertical facecam layout in `render.py`; hook text; clip log `clips/log.csv`; campaign shortlist once owners send campaigns; later: speech-to-text captions and highlight finder (each needs a network host approved by the owners).
+- GTA VI guide items below are paused.
 - [x] First run: research and record the **Strategy decision** (Nov 14).
 - [x] First run: clip intake and publishing setup researched; steps in `gta6/SETUP.md` (Nov 14).
 - [x] First run: 5 channel names proposed (Nov 14).
@@ -86,3 +79,4 @@ Do them in this order. Full click-by-click steps: **`gta6/SETUP.md`**.
 - Nov 14 (supervisor run 1): Strategy decided (owner-voiced long-form guides + Shorts funnel + TikTok; YPP before Feb 1 is the goal). Intake/publishing designed around a business Google account (Drive + YouTube API, private uploads). 5 names proposed. Queue + scripts v001–v003 written. Render pipeline built and tested. News: launch still Nov 19, pre-load live since Nov 10; nothing plan-changing.
 - Nov 15 (run 2): No owner input yet (no name pick, no credentials). News: no Rockstar post today; launch Nov 19 confirmed; Rockstar will release a free printable map Nov 19 (don't use it in thumbnails; it's Rockstar art). Built `voice.py` (tested) and `google_api.py` (awaiting credentials); SETUP.md voice rules updated (5 s pause = retake, say "skip").
 - Nov 16 (run 3): Still no owner input; 3 days to launch, so name + Google access (SETUP.md Parts A–E) is now urgent. News: Rockstar co-director says the console build runs at **30 fps**; no 60 fps mode confirmed ([VGC](https://www.videogameschronicle.com/news/gta-6-is-confirmed-to-be-30-frames-per-second-at-launch-no-performance-mode-at-launch/), [TechRadar](https://techradar.com/gaming/gta-6-will-launch-at-30fps-on-ps5-and-xbox-for-now-confirms-rockstar-but-while-60fps-is-reportedly-possible-its-a-40fps-mode-we-really-want-to-see)). Changes: renders now 30 fps (no duplicated frames); v001's graphics-mode section notes this. If a performance mode does exist at launch, it becomes the first Short.
+- Nov 17: Owners pivoted to a streamer clips channel. Researched clip monetization (Whop Content Rewards ~$1–3 per 1K views, no follower minimum; YouTube reused-content risk; TikTok rewards exclude unoriginal clips). Checked names: Chat Clipped, Stream Sifter, Clipsmith, Chat Replay Club have free @handles and domains. Plan in `clips/PLAN.md`.
