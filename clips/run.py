@@ -3,8 +3,9 @@
 
   python3 clips/run.py plan <work_dir>            # find + download + transcribe + detect facecam
   #   -> <work_dir>/plan.json. The supervisor reads each transcript, sets "skip": true for anything
-  #      that breaks the rules (music, story spoilers, hateful/sexual content, a weak moment)
-  #      and rewrites "hook" (the on-screen line for the first 3 s) and "caption_title".
+  #      that breaks the rules (music, story spoilers, hateful/sexual content, a weak moment),
+  #      rewrites "hook" (the on-screen line for the first 3 s) and "caption_title", and checks
+  #      "facecam" against "check_frame" (red box; fix the fractions, or [] for full-frame layout).
   python3 clips/run.py make <work_dir> [--post]   # render every non-skipped clip; --post publishes
   #   to Instagram + Facebook, logs to clips/log.csv, writes clips/whop_todo.md (links to submit
   #   on contentrewards.com within 30 minutes of posting; older posts can never be submitted)
@@ -93,15 +94,33 @@ def plan(work: Path, cfg: dict) -> Path:
         src = download(c["url"], work / "src" / f"{c['id']}.mp4")
         words = transcribe(src)
         cam = s.get("facecam", "auto")
+        box = list(detect(src) or []) if cam == "auto" else cam
         items.append({
             "clip_id": c["id"], "streamer": s["twitch"], "clip_url": c["url"], "clip_views": c["view_count"],
             "title": c["title"], "src": str(src), "words": words,
             "transcript": " ".join(w["word"].strip() for w in words),
-            "facecam": list(detect(src) or []) if cam == "auto" else cam,
+            "facecam": box, "check_frame": str(review_frame(src, box, work / "src" / f"{c['id']}.check.jpg")),
             "hook": hook_from_title(c["title"]), "caption_title": c["title"], "skip": False,
         })
     out = work / "plan.json"
     out.write_text(json.dumps(items, indent=1) + "\n")
+    return out
+
+
+def review_frame(src: Path, box: list | None, out: Path) -> Path:
+    """One frame from the middle of the clip with the facecam box drawn in red, for the supervisor's review.
+    Auto-detection misses turned heads and can mark a static object, so every box gets checked by eye."""
+    import cv2
+    cap = cv2.VideoCapture(str(src))
+    cap.set(cv2.CAP_PROP_POS_FRAMES, int(cap.get(cv2.CAP_PROP_FRAME_COUNT)) // 2)
+    ok, frame = cap.read()
+    if not ok:
+        raise RuntimeError(f"can't read a frame from {src}")
+    if box:
+        h, w = frame.shape[:2]
+        x, y, bw, bh = box
+        cv2.rectangle(frame, (int(x * w), int(y * h)), (int((x + bw) * w), int((y + bh) * h)), (0, 0, 255), 6)
+    cv2.imwrite(str(out), cv2.resize(frame, (960, 540)))
     return out
 
 
