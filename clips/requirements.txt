@@ -2,3 +2,6 @@ requests
 yt-dlp
 faster-whisper
 opencv-python-headless
+# faster-whisper 1.2.1 (latest release) calls av.open(metadata_errors=...), which newer PyAV removed.
+# Drop this pin once faster-whisper releases its fix (SYSTRAN/faster-whisper PR #1495, merged Sep 30, 2026).
+av<18

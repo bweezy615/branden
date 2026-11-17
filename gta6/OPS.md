@@ -35,6 +35,10 @@ _Decided Nov 14, 2026 (first supervisor run). Revisit at the Dec 6 and Jan 3 che
 **Revisit triggers:** Dec 6: if long videos average under 1,000 views, shift to more Shorts and test which topics pull; if any video passes 20K, make three follow-ups on the same topic. If owners can't keep up with voiceover, test captions-only long-form on one video and compare retention before changing.
 
 ## Status
+- **ChatClipped pipeline (Nov 17, tested on environment `branden-chatclipped`):** download (yt-dlp) → transcribe (faster-whisper "small", CPU, ~6 s per 10 s clip) → render 1080x1920 at about -14 LUFS all **work**, tested on synthetic clips and one public Twitch clip (render kept in scratch only; nothing posted). Both layouts (facecam-over-gameplay and blurred-fit) checked by eye.
+- **Hosts:** reachable: graph.facebook.com, rupload.facebook.com, api.whop.com, id/api/gql.twitch.tv, Twitch clip CDN, huggingface.co, Google APIs. Added Nov 17 (were refused): `cas-server.xethub.hf.co`, `us.aws.cdn.hf.co` (Whisper model files), `d1ndex63qxojbr.cloudfront.net` (Twitch clip video). If downloads start failing with a proxy 403, check the proxy status for a new CDN host.
+- **Environment setup script** now installs `clips/requirements.txt` (yt-dlp, faster-whisper, PyAV pinned below 18 because faster-whisper 1.2.1 breaks on PyAV 19). Not yet proven in a fresh container.
+- **Keys:** no `TWITCH_*` or `META_*` env vars yet, so `twitch.py top` (Twitch API) and posting are untested. `clips/config.json` has no streamers yet (no campaigns joined).
 - Tracker app: **dropped** by the owners (Nov 14).
 - Supervisor agent: set up Nov 14, with a daily run.
 - Intake location for raw clips: **Google Drive `Clips IN` folder on a business Google account**, designed; owners haven't set it up yet (`gta6/SETUP.md`).
@@ -54,7 +58,8 @@ ChatClipped, see `clips/SETUP.md`:
 
 ## Supervisor's queue
 - [x] ChatClipped pipeline written (Nov 17): `clips/twitch.py`, `transcribe.py`, `render_clip.py` (tested), `meta.py`, `run.py`.
-- [ ] On the new environment: install yt-dlp + faster-whisper, first real end-to-end test once keys exist; owners review 2 renders before the first post.
+- [x] On the new environment: yt-dlp + faster-whisper installed, model downloads, download→transcribe→render tested (Nov 17).
+- [ ] Once keys exist: `twitch.py top <login>` read-only test, then 2 renders for the owners' review before the first post.
 - [ ] Pick campaigns from the owners' list; fill `clips/config.json` (facecam box per streamer from a frame).
 - [ ] Look into automating Whop submissions (user-OAuth bounty submissions API).
 - GTA VI guide items below are paused.
@@ -82,3 +87,4 @@ ChatClipped, see `clips/SETUP.md`:
 - Nov 16 (run 3): Still no owner input; 3 days to launch, so name + Google access (SETUP.md Parts A–E) is now urgent. News: Rockstar co-director says the console build runs at **30 fps**; no 60 fps mode confirmed ([VGC](https://www.videogameschronicle.com/news/gta-6-is-confirmed-to-be-30-frames-per-second-at-launch-no-performance-mode-at-launch/), [TechRadar](https://techradar.com/gaming/gta-6-will-launch-at-30fps-on-ps5-and-xbox-for-now-confirms-rockstar-but-while-60fps-is-reportedly-possible-its-a-40fps-mode-we-really-want-to-see)). Changes: renders now 30 fps (no duplicated frames); v001's graphics-mode section notes this. If a performance mode does exist at launch, it becomes the first Short.
 - Nov 17: Owners pivoted to a streamer clips channel. Researched clip monetization (Whop Content Rewards ~$1–3 per 1K views, no follower minimum; YouTube reused-content risk; TikTok rewards exclude unoriginal clips). Checked names: Chat Clipped, Stream Sifter, Clipsmith, Chat Replay Club have free @handles and domains. Plan in `clips/PLAN.md`.
 - Nov 17 (evening): Owners chose ChatClipped; platforms Instagram + Facebook + Whop; want autonomy. Researched $1M+ clipping businesses (`clips/RESEARCH.md`): the big money is the broker model. Built the clip pipeline; render tested. Created environment `branden-chatclipped` (Meta, Twitch, Whop, Hugging Face, Google hosts); this session couldn't move onto it.
+- Nov 17 (night, first run on `branden-chatclipped`): Host check: Meta, Whop, Twitch API and Google hosts answer. The Whisper model download and Twitch clip video were refused by the proxy (Hugging Face now serves files from `cas-server.xethub.hf.co` / `us.aws.cdn.hf.co`; Twitch clips from a CloudFront host); added those 3 hosts with the owners' approval. Fixed a faster-whisper 1.2.1 + PyAV 19 crash by pinning `av<18` (`clips/requirements.txt`); the setup script installs it. Tests passed: GTA pipeline `run_test.sh`, both `render_clip.py` layouts, Whisper word timings, and one real public clip end to end (not posted, not kept). No Twitch/Meta keys yet, so the API and posting tests wait on SETUP Parts C–E.
