@@ -44,6 +44,13 @@ class Twitch:
             raise RuntimeError(f"Twitch user {login!r} not found")
         return users[0]["id"]
 
+    def game_id(self, name: str) -> str:
+        """Twitch category id for an exact game name, e.g. "Marvel Rivals"."""
+        games = self.get("games", name=name)
+        if not games:
+            raise RuntimeError(f"Twitch game {name!r} not found (needs the exact category name)")
+        return games[0]["id"]
+
     def top_clips(self, login: str, hours: int = 36) -> list[dict]:
         since = (datetime.now(timezone.utc) - timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%SZ")
         clips = self.get("clips", broadcaster_id=self.user_id(login), started_at=since, first=20)

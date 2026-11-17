@@ -15,6 +15,7 @@ proof that we're allowed to (a Whop campaign or the streamer's own clipping prog
 Streamer entry:
   {"twitch": "login", "name": "Display Name", "campaign": "Whop campaign URL or program name",
    "facecam": "auto" | [x, y, w, h] | null,   # auto-detect, fixed fractions, or no facecam layout
+   "game": "Marvel Rivals",                    # optional: only clips in this exact Twitch category
    "tags": ["#campaign", "#tags"], "caption_note": "text the campaign requires"}
 """
 import csv
@@ -84,8 +85,9 @@ def plan(work: Path, cfg: dict) -> Path:
 
     tw, done, picks = Twitch(), logged_ids(), []
     for s in cfg["streamers"]:
+        game = tw.game_id(s["game"]) if s.get("game") else None  # campaigns that only pay for one game
         for c in tw.top_clips(s["twitch"], cfg["lookback_hours"]):
-            if c["id"] not in done and c["view_count"] >= cfg["min_clip_views"]:
+            if c["id"] not in done and c["view_count"] >= cfg["min_clip_views"] and game in (None, c["game_id"]):
                 picks.append((s, c))
     picks.sort(key=lambda sc: sc[1]["view_count"], reverse=True)
 
@@ -120,7 +122,8 @@ def review_frame(src: Path, box: list | None, out: Path) -> Path:
         h, w = frame.shape[:2]
         x, y, bw, bh = box
         cv2.rectangle(frame, (int(x * w), int(y * h)), (int((x + bw) * w), int((y + bh) * h)), (0, 0, 255), 6)
-    cv2.imwrite(str(out), cv2.resize(frame, (960, 540)))
+    if not cv2.imwrite(str(out), cv2.resize(frame, (960, 540))):
+        raise RuntimeError(f"can't write {out}")
     return out
 
 
