@@ -26,7 +26,7 @@ W, H, FPS = 1080, 1920, 30
 CAM_H = 768            # facecam band height (40%)
 HOOK_S = 3.0
 WORDS_PER_CAPTION = 3
-HANDLE = "@chatclipped"
+HANDLE = json.loads((Path(__file__).resolve().parent / "config.json").read_text())["handle"]  # brand tag on every clip
 FONT = "Inter"
 SAFE_BOTTOM = 400      # Reels UI covers ~372-380 px at the bottom of a 1080x1920 frame
 
