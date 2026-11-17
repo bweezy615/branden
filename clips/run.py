@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""ChatClipped daily run, in two steps so the supervisor agent can apply judgment between them.
+"""Clipamole daily run, in two steps so the supervisor agent can apply judgment between them.
 
   python3 clips/run.py plan <work_dir>            # find + download + transcribe + detect facecam
   #   -> <work_dir>/plan.json. The supervisor reads each transcript, sets "skip": true for anything

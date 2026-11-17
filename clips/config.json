@@ -1,11 +1,11 @@
 {
-  "brand": "ChatClipped",
-  "handle": "@chatclipped",
+  "brand": "Clipamole",
+  "handle": "@clipamole",
   "max_clips_per_run": 3,
   "min_clip_views": 200,
   "lookback_hours": 36,
   "hashtags": [
-    "#chatclipped",
+    "#clipamole",
     "#streamerclips",
     "#twitch"
   ],

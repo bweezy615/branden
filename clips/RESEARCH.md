@@ -37,7 +37,7 @@ Typical agency margin: 15–20% [unverified] ([Trends.vc](https://trends.vc/clip
 - **Budgets run dry:** first come, first paid.
 - **Clips with music in them:** their ad revenue goes to the rights holder.
 
-## What this means for ChatClipped
+## What this means for Clipamole
 1. **Facebook Content Monetization is not a realistic income source** for clips of other people unless the creator authorizes us (an official or collab page). Facebook is reach only, and it's at risk of being suppressed.
 2. **Instagram pays through Whop campaigns, not Instagram itself.** Our clips must be visibly transformed (hook, captions, our layout, our framing), or the account stops being recommended.
 3. **The million-dollar path is becoming a broker.** Steps 1–3 in `clips/PLAN.md`: earn from campaigns, collect proof, then sell CPM campaigns to streamers and small brands and pay other clippers through Whop.

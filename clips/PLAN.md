@@ -1,6 +1,6 @@
-# ChatClipped: plan
+# Clipamole: plan
 
-Updated Nov 17, 2026. Owners chose the name **ChatClipped** (@chatclipped) and the platforms **Instagram + Facebook + Whop Content Rewards**. Goal: run as autonomously as possible. Research behind this plan: `clips/RESEARCH.md`. Setup steps: `clips/SETUP.md`.
+Updated Nov 17, 2026. Owners chose the name **Clipamole** (@clipamole) and the platforms **Instagram + Facebook + Whop Content Rewards**. Goal: run as autonomously as possible. Research behind this plan: `clips/RESEARCH.md`. Setup steps: `clips/SETUP.md`.
 
 ## How it makes money, in order
 1. **Whop campaigns (now):** streamers and brands pay ~$1–3 per 1,000 views for clips of their content. Instagram Reels count; Facebook doesn't (Whop only tracks TikTok, YouTube, Instagram and X).
@@ -10,18 +10,18 @@ Updated Nov 17, 2026. Owners chose the name **ChatClipped** (@chatclipped) and t
 
 ## Rules (hard-coded where possible)
 1. **Permission only.** `clips/run.py` refuses to clip any streamer not listed in `clips/config.json` with a campaign or program. A streamer is added only when we've joined their Whop campaign or their own clipping program.
-2. **Transform every clip:** our vertical layout (facecam over gameplay), a hook line in the first 3 seconds, word-by-word captions and the @chatclipped tag. This is what keeps Instagram recommending us.
+2. **Transform every clip:** our vertical layout (facecam over gameplay), a hook line in the first 3 seconds, word-by-word captions and the @clipamole tag. This is what keeps Instagram recommending us.
 3. **Credit the streamer** in every caption. Remove a clip the same day if they ask.
 4. **Skip** clips with music playing, GTA VI story cutscenes, and gambling or crypto-casino campaigns.
 5. **Disclose on every clip.** Content Rewards requires a clear disclosure at the start of every clip, whatever the brief says, and a missing one is a valid reason to reject. Every render shows `#ad` from the first frame and every caption starts with `#ad`. Campaign-required tags go in config. Never post as an Instagram Collab unless the brief allows it.
 6. **No view-botting or engagement buying, ever.** Whop bans permanently and takes the losses from earnings.
 
 ## What runs automatically
-Software choice and the GitHub comparison: `clips/TOOLS.md`. Each day the supervisor (Claude, in its own cloud session on environment `branden-chatclipped`, daily at 7:41 UTC) runs:
+Software choice and the GitHub comparison: `clips/TOOLS.md`. Each day the supervisor (Claude, in its own cloud session on environment `branden-clipamole`, daily at 7:41 UTC) runs:
 
 1. `python3 clips/run.py plan <dir>`: most-viewed Twitch clips (last 36 h) of each permitted streamer → download → word-level transcript → auto facecam box → `plan.json`.
 2. **The supervisor reviews `plan.json`:** skips rule-breakers (music, story spoilers, hateful/sexual content, weak moments) and writes the hook and caption.
-3. `python3 clips/run.py make <dir> --post`: render 1080x1920 (facecam over gameplay, hook, captions, @chatclipped) → post Instagram + Facebook Reels → log → `clips/whop_todo.md`.
+3. `python3 clips/run.py make <dir> --post`: render 1080x1920 (facecam over gameplay, hook, captions, @clipamole) → post Instagram + Facebook Reels → log → `clips/whop_todo.md`.
 4. Reads Instagram views into the scorecard, drops weak streamers/campaigns, reports.
 
 | Part | File | Tested |

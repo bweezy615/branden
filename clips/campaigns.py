@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Shortlist open Content Rewards (Whop) campaigns that ChatClipped can join.
+"""Shortlist open Content Rewards (Whop) campaigns that Clipamole can join.
 
 Usage: python3 clips/campaigns.py <out.md> [<out.json>]
 

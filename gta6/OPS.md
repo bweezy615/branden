@@ -35,9 +35,9 @@ _Decided Nov 14, 2026 (first supervisor run). Revisit at the Dec 6 and Jan 3 che
 **Revisit triggers:** Dec 6: if long videos average under 1,000 views, shift to more Shorts and test which topics pull; if any video passes 20K, make three follow-ups on the same topic. If owners can't keep up with voiceover, test captions-only long-form on one video and compare retention before changing.
 
 ## Status
-- **NAME: ChatClipped is out (checked Nov 17).** @chatclipped on Instagram is taken by a competing stream-clips page ("Chat Clipped | Stream Clips", ~41 followers, also YouTube @chatclippedtv). **Recommended new name: Clipamole** (@clipamole): free on Instagram, YouTube, Twitch and Kick, clipamole.com unregistered, and zero web mentions. Backup: **PogTide** (same checks pass, but "pog tide" is an existing Dota 2 meme). TikTok, X and Facebook couldn't be checked from here, so claim those first. ~25 other names were taken (e.g. ChatWitnessed, StreamSnipz, LiveCutz, ChatRoar and ReplayRanch are existing clip pages). Code and docs still say ChatClipped until the owners confirm; then it's `brand`, `handle` and hashtags in `clips/config.json` (the on-screen tag reads `handle`) plus the docs.
+- **NAME: Clipamole (@clipamole), owners' pick on Nov 17.** ChatClipped was dropped because @chatclipped on Instagram belongs to a competing clip page. When checked: free on Instagram, YouTube, Twitch, Kick; clipamole.com unregistered; no web mentions. TikTok, X and the Facebook username couldn't be checked: owners claim them at signup and tell the agent which handles they got. Brand and tag live in `clips/config.json` (`brand`, `handle`, hashtags). Environment renamed `branden-clipamole`.
 - **Owners OK'd the 2 test renders (Nov 17).** First real posts can go out once accounts, keys and joined campaigns exist, at an owner-chosen posting window.
-- **ChatClipped pipeline (Nov 17, tested on environment `branden-chatclipped`):** download (yt-dlp) → transcribe (faster-whisper "small", CPU, ~6 s per 10 s clip) → render 1080x1920 at about -14 LUFS all **work**, tested on synthetic clips and one public Twitch clip (render kept in scratch only; nothing posted). Both layouts (facecam-over-gameplay and blurred-fit) checked by eye.
+- **Clipamole pipeline (Nov 17, tested on environment `branden-clipamole`):** download (yt-dlp) → transcribe (faster-whisper "small", CPU, ~6 s per 10 s clip) → render 1080x1920 at about -14 LUFS all **work**, tested on synthetic clips and one public Twitch clip (render kept in scratch only; nothing posted). Both layouts (facecam-over-gameplay and blurred-fit) checked by eye.
 - **Hosts:** reachable: graph.facebook.com, rupload.facebook.com, api.whop.com, id/api/gql.twitch.tv, Twitch clip CDN, huggingface.co, Google APIs. Added Nov 17 (were refused): `cas-server.xethub.hf.co`, `us.aws.cdn.hf.co` (Whisper model files), `d1ndex63qxojbr.cloudfront.net` (Twitch clip video). If downloads start failing with a proxy 403, check the proxy status for a new CDN host.
 - **Environment setup script** now installs `clips/requirements.txt` (yt-dlp, faster-whisper, OpenCV pinned below 5, PyAV pinned below 18; reasons in the file). Not yet proven in a fresh container.
 - **Facecam auto-detect (`clips/facecam.py`)** works with OpenCV 4.14: finds a static face in the corner of a synthetic clip, returns `none` for a clip with no face, and the detected box renders correctly. OpenCV 5 removed the face detector from the main package, hence the pin.
@@ -68,15 +68,15 @@ _Decided Nov 14, 2026 (first supervisor run). Revisit at the Dec 6 and Jan 3 che
 - Scripts ready: v001 settings, v002 beginner tips, v003 map drive (`gta6/creator/scripts/`). Queue: `gta6/creator/queue.md`.
 
 ## Owners' checklist (only humans can do these)
-ChatClipped, see `clips/SETUP.md`:
-1. **Part A**: Facebook Page + Instagram @chatclipped (professional), linked.
-2. **Part B**: sign up on contentrewards.com, connect @chatclipped there, and **join the 4 campaigns picked under Status**.
+Clipamole, see `clips/SETUP.md`:
+1. **Part A**: Facebook Page + Instagram @clipamole (professional), linked.
+2. **Part B**: sign up on contentrewards.com, connect @clipamole there, and **join the 4 campaigns picked under Status**.
 3. **Parts C–D**: Twitch app keys, Meta app + Page token.
-4. **Part E**: start a session on environment `branden-chatclipped`, add the 5 keys, say "keys added".
+4. **Part E**: start a session on environment `branden-clipamole`, add the 5 keys, say "keys added".
 5. Daily, at a time you choose: say "post", then paste the links the agent sends into Content Rewards **within 30 minutes**.
 
 ## Supervisor's queue
-- [x] ChatClipped pipeline written (Nov 17): `clips/twitch.py`, `transcribe.py`, `render_clip.py` (tested), `meta.py`, `run.py`.
+- [x] Clipamole pipeline written (Nov 17): `clips/twitch.py`, `transcribe.py`, `render_clip.py` (tested), `meta.py`, `run.py`.
 - [x] On the new environment: yt-dlp + faster-whisper installed, model downloads, download→transcribe→render tested (Nov 17).
 - [ ] Once keys exist: `twitch.py top <login>` read-only test, then 2 renders for the owners' review before the first post.
 - [ ] Pick campaigns from the owners' list; fill `clips/config.json` (facecam box per streamer from a frame).
@@ -114,3 +114,4 @@ ChatClipped, see `clips/SETUP.md`:
 - Nov 17 news check: launch still Nov 19 (early unlocks by time zone); Rockstar x Weather Channel footage and story previews. Nothing plan-changing; from Nov 19 expect many GTA story-spoiler stream clips, which the plan review skips (PLAN rule 4).
 - Nov 17 07:41 UTC (daily run): No owner input yet (no keys, no joined campaigns, no review OK on the 2 test renders). Campaign scan: still 19 of 746 fit; all 4 picks still open with unchanged budgets. Nothing rendered or posted.
 - Nov 17 (day): Owners OK'd both test renders. Name check found @chatclipped taken on Instagram by a competing clip page; owners asked for a new name. Checked ~30 candidates across Instagram, YouTube, Twitch, Kick, .com and web search; **Clipamole** is the only fully clean one (backup PogTide). Awaiting owners' pick before renaming.
+- Nov 17 (day, cont.): Owners picked **Clipamole**. Renamed everything (code, config, docs, on-screen tag @clipamole, #clipamole, environment `branden-clipamole`); dated log lines keep the old name.

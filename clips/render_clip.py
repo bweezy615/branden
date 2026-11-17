@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Turn one 16:9 stream clip into a 1080x1920 ChatClipped vertical video.
+"""Turn one 16:9 stream clip into a 1080x1920 Clipamole vertical video.
 
 Layout with a facecam box (fractions of the source frame, set per streamer in config.json):
   top 40%  = streamer's facecam, cropped and scaled to fill
