@@ -7,9 +7,12 @@ Layout with a facecam box (fractions of the source frame, set per streamer in co
 Without a facecam box: the full frame fitted over a blurred copy of itself.
 
 On top: hook text for the first HOOK_S seconds, word-by-word captions (from transcribe.py),
-and a small @handle tag. Audio is loudness-normalized to -14 LUFS (two-pass).
+an #ad disclosure (Content Rewards requires one from the first frame of every clip), a
+twitch.tv/<streamer> credit (many campaigns require it) and a small @handle tag. Everything sits
+inside the Instagram Reels safe zone: clear of the bottom SAFE_BOTTOM px (caption, audio, buttons),
+the top ~270 px, and the right-hand button column. Audio is loudness-normalized to -14 LUFS (two-pass).
 
-Usage: python3 clips/render_clip.py <clip.mp4> <words.json> <hook text> <out.mp4> [facecam x,y,w,h]
+Usage: python3 clips/render_clip.py <clip.mp4> <words.json> <hook text> <out.mp4> <twitch login> [facecam x,y,w,h]
 """
 import json
 import subprocess
@@ -25,6 +28,7 @@ HOOK_S = 3.0
 WORDS_PER_CAPTION = 3
 HANDLE = "@chatclipped"
 FONT = "Inter"
+SAFE_BOTTOM = 400      # Reels UI covers ~372-380 px at the bottom of a 1080x1920 frame
 
 
 def caption_groups(words: list[dict]) -> list[dict]:
@@ -43,8 +47,8 @@ def caption_groups(words: list[dict]) -> list[dict]:
     return groups
 
 
-def write_ass(hook: str, words: list[dict], duration: float, has_cam: bool, path: Path) -> None:
-    hook_y = CAM_H if has_cam else 330
+def write_ass(hook: str, words: list[dict], duration: float, has_cam: bool, twitch_login: str, path: Path) -> None:
+    hook_y = CAM_H if has_cam else 400
     header = f"""[Script Info]
 ScriptType: v4.00+
 PlayResX: {W}
@@ -55,7 +59,9 @@ WrapStyle: 0
 Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, MarginR, MarginV, Encoding
 Style: Hook,{FONT},70,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,3,18,0,5,60,60,0,1
 Style: Cap,{FONT},86,&H0000F0FF,&H00FFFFFF,&H00000000,&H80000000,1,0,0,0,100,100,0,0,1,7,3,5,60,60,0,1
-Style: Tag,{FONT},38,&H90FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,2,0,3,40,40,40,1
+Style: Tag,{FONT},38,&H90FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,2,0,1,60,60,{SAFE_BOTTOM + 56},1
+Style: Disclose,{FONT},40,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,3,0,1,60,60,{SAFE_BOTTOM + 104},1
+Style: Credit,{FONT},44,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,1,0,0,0,100,100,0,0,1,4,0,1,60,60,{SAFE_BOTTOM},1
 
 [Events]
 Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
@@ -64,8 +70,10 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     lines = [
         f"Dialogue: 2,{ass_time(0)},{ass_time(min(HOOK_S, duration))},Hook,,0,0,0,,{{\\pos({W // 2},{hook_y})}}{hook_text}",
         f"Dialogue: 0,{ass_time(0)},{ass_time(duration)},Tag,,0,0,0,,{HANDLE}",
+        f"Dialogue: 0,{ass_time(0)},{ass_time(duration)},Credit,,0,0,0,,twitch.tv/{twitch_login}",
+        f"Dialogue: 0,{ass_time(0)},{ass_time(duration)},Disclose,,0,0,0,,#ad",
     ]
-    cap_y = 1420 if has_cam else 1500
+    cap_y = 1330 if has_cam else 1390
     for g in caption_groups(words):
         lines.append(f"Dialogue: 1,{ass_time(g['start'])},{ass_time(g['end'])},Cap,,0,0,0,,{{\\pos({W // 2},{cap_y})}}{g['text']}")
     path.write_text(header + "\n".join(lines) + "\n")
@@ -101,14 +109,14 @@ def video_filter(facecam: tuple[float, float, float, float] | None, src_w: int, 
 
 
 def render(clip: Path, words: list[dict], hook: str, out: Path,
-           facecam: tuple[float, float, float, float] | None) -> Path:
+           facecam: tuple[float, float, float, float] | None, twitch_login: str) -> Path:
     src_w, src_h, duration = probe(clip)
     if facecam and not all(0 <= v <= 1 for v in facecam):
         raise ValueError(f"facecam box must be fractions 0..1, got {facecam}")
     out.parent.mkdir(parents=True, exist_ok=True)
     ass = out.with_suffix(".ass")
     raw = out.with_suffix(".raw.mkv")
-    write_ass(hook, words, duration, facecam is not None, ass)
+    write_ass(hook, words, duration, facecam is not None, twitch_login, ass)
     subprocess.run(
         ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(clip),
          "-filter_complex", video_filter(facecam, src_w, src_h, ass),
@@ -123,11 +131,12 @@ def render(clip: Path, words: list[dict], hook: str, out: Path,
 
 
 def main() -> None:
-    if len(sys.argv) not in (5, 6):
+    if len(sys.argv) not in (6, 7):
         sys.exit(__doc__)
     clip, words_file, hook, out = Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3], Path(sys.argv[4])
-    facecam = tuple(float(v) for v in sys.argv[5].split(",")) if len(sys.argv) == 6 else None
-    print(render(clip, json.loads(words_file.read_text()), hook, out, facecam))
+    login = sys.argv[5]
+    facecam = tuple(float(v) for v in sys.argv[6].split(",")) if len(sys.argv) == 7 else None
+    print(render(clip, json.loads(words_file.read_text()), hook, out, facecam, login))
 
 
 if __name__ == "__main__":

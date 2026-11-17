@@ -6,7 +6,8 @@
   #      that breaks the rules (music, story spoilers, hateful/sexual content, a weak moment)
   #      and rewrites "hook" (the on-screen line for the first 3 s) and "caption_title".
   python3 clips/run.py make <work_dir> [--post]   # render every non-skipped clip; --post publishes
-  #   to Instagram + Facebook, logs to clips/log.csv, refreshes clips/whop_todo.md
+  #   to Instagram + Facebook, logs to clips/log.csv, writes clips/whop_todo.md (links to submit
+  #   on contentrewards.com within 30 minutes of posting; older posts can never be submitted)
 
 Only streamers listed in clips/config.json are ever clipped, and each needs a "campaign":
 proof that we're allowed to (a Whop campaign or the streamer's own clipping program).
@@ -19,7 +20,7 @@ import csv
 import json
 import re
 import sys
-from datetime import date
+from datetime import date, datetime, timedelta, timezone
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
@@ -67,7 +68,8 @@ def hook_from_title(title: str) -> str:
 
 
 def caption(streamer: dict, title: str, cfg: dict) -> str:
-    parts = [title.strip(), "", f"Credit: {streamer['name']} (twitch.tv/{streamer['twitch']})"]
+    # Content Rewards: a clear disclosure at the start of every clip and caption, whatever the brief says.
+    parts = [f"#ad {title.strip()}", "", f"Credit: {streamer['name']} (twitch.tv/{streamer['twitch']})"]
     if streamer.get("caption_note"):
         parts.append(streamer["caption_note"])
     parts.append(" ".join(streamer.get("tags", []) + cfg["hashtags"]))
@@ -108,12 +110,13 @@ def make(work: Path, cfg: dict, post: bool) -> None:
     if post:
         from meta import post_facebook, post_instagram
     streamers = {s["twitch"]: s for s in cfg["streamers"]}
+    posted = []
     for it in json.loads((work / "plan.json").read_text()):
         if it["skip"]:
             continue
         s = streamers[it["streamer"]]  # KeyError = not permitted: stop
         out = render(Path(it["src"]), it["words"], it["hook"], work / "out" / f"{it['clip_id']}.mp4",
-                     tuple(it["facecam"]) if it["facecam"] else None)
+                     tuple(it["facecam"]) if it["facecam"] else None, s["twitch"])
         row = {"date": str(date.today()), "streamer": s["twitch"], "campaign": s["campaign"],
                "clip_id": it["clip_id"], "clip_url": it["clip_url"], "clip_views": it["clip_views"],
                "title": it["title"], "hook": it["hook"], "ig_media_id": "", "ig_url": "",
@@ -123,19 +126,24 @@ def make(work: Path, cfg: dict, post: bool) -> None:
             row["ig_media_id"], row["ig_url"] = post_instagram(out, text)
             row["fb_video_id"], row["fb_url"] = post_facebook(out, text)
             append_log(row)
+            posted.append(row)
         print(f"{it['clip_id']}\t{out}\t{row['ig_url']}")
     if post:
-        write_whop_todo()
+        write_whop_todo(posted)
 
 
-def write_whop_todo() -> None:
-    with LOG.open() as fh:
-        pending = [r for r in csv.DictReader(fh) if r["whop_submitted"] != "yes" and r["ig_url"]]
-    lines = ["# Links to submit in Whop Content Rewards", "",
-             "Submit each Instagram link in its campaign soon after posting (views count once the link is "
-             "tracked). Then tell the agent, or set `whop_submitted` to yes in clips/log.csv.", ""]
-    lines += [f"- [{r['campaign']}] {r['streamer']}: {r['ig_url']}" for r in pending]
-    WHOP_TODO.write_text("\n".join(lines) + "\n")
+def write_whop_todo(posted: list[dict]) -> None:
+    """This run's links, grouped by campaign: Content Rewards only accepts a post under 30 minutes old."""
+    deadline = (datetime.now(timezone.utc) + timedelta(minutes=30)).strftime("%H:%M UTC")
+    lines = [f"# Submit by {deadline} on contentrewards.com", "",
+             "For each campaign: open it, press **Submit clip**, paste its links (one per line), tick the box, "
+             "submit. A post older than 30 minutes can never be submitted.", ""]
+    by_campaign: dict[str, list[str]] = {}
+    for r in posted:
+        by_campaign.setdefault(r["campaign"], []).append(r["ig_url"])
+    for campaign, urls in by_campaign.items():
+        lines += [f"## {campaign}", "", "```", *urls, "```", ""]
+    WHOP_TODO.write_text("\n".join(lines))
 
 
 def main() -> None:

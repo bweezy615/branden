@@ -13,7 +13,7 @@ Updated Nov 17, 2026. Owners chose the name **ChatClipped** (@chatclipped) and t
 2. **Transform every clip:** our vertical layout (facecam over gameplay), a hook line in the first 3 seconds, word-by-word captions and the @chatclipped tag. This is what keeps Instagram recommending us.
 3. **Credit the streamer** in every caption. Remove a clip the same day if they ask.
 4. **Skip** clips with music playing, GTA VI story cutscenes, and gambling or crypto-casino campaigns.
-5. **Disclose** paid campaigns where the campaign or platform asks (#ad / paid-partnership label); the campaign's required tags go in config.
+5. **Disclose on every clip.** Content Rewards requires a clear disclosure at the start of every clip, whatever the brief says, and a missing one is a valid reason to reject. Every render shows `#ad` from the first frame and every caption starts with `#ad`. Campaign-required tags go in config. Never post as an Instagram Collab unless the brief allows it.
 6. **No view-botting or engagement buying, ever.** Whop bans permanently and takes the losses from earnings.
 
 ## What runs automatically
@@ -35,17 +35,17 @@ Software choice and the GitHub comparison: `clips/TOOLS.md`. Each day the superv
 
 **Warm-up:** brand-new accounts that post many API videos on day one risk being flagged as spam, so we start at **3 clips/day** for the first week (`max_clips_per_run` in config) and raise it to 6, then 10. This is a precaution, not a published Meta rule.
 
-**The one manual step left: submitting links in Whop.** Whop's submission API needs a logged-in user's permission (it can't be done with an account key), and it isn't confirmed that Content Rewards uses it. Until then, owners paste the day's links from `clips/whop_todo.md` into Whop (about 2 minutes). Submit soon after posting: views count from when the link is tracked.
+**The one manual step left: submitting links on contentrewards.com, within 30 minutes of posting.** Content Rewards only accepts a post that is under 30 minutes old, and each post can be submitted once, ever ([Submit a video](https://help.contentrewards.com/en/articles/15319814)). Submitting needs a logged-in account and there's no public API, so the agent can't do it. So **posting happens when an owner is free for 5 minutes**: the owner says "post" in chat (or the agent posts at an agreed time), the agent posts, then sends the links grouped by campaign (also in `clips/whop_todo.md`). The owner pastes each campaign's links into its **Submit clip** box (one per line, one paste per campaign). A clip that misses the window earns nothing.
 
 ## Owners' time
 - One-time: about 60 minutes (`clips/SETUP.md`).
-- Daily: about 5 minutes. Submit links in Whop, glance at the posts, and tell the agent about new campaigns.
+- Daily: about 5 minutes, at a time you choose. Say "post", paste the links into Content Rewards within 30 minutes, and join any new campaign the agent recommends.
 
 ## Timeline
 | When | What |
 |---|---|
 | **Tomorrow (Nov 18)** | Owners: all of `clips/SETUP.md` (about 60 min) and send campaigns. Supervisor: same day, fills `config.json`, runs plan + make, sends 2 renders for review; on the owners' OK, first posts. |
-| Nov 19 onward | Autopilot at 3/day (week 1), then 6, then 10. Owners: 2–5 min/day submitting Whop links. |
+| Nov 19 onward | Autopilot at 3/day (week 1), then 6, then 10. Owners: 5 min/day, posting window + submitting links within 30 min. |
 | Week 2 | 8–10 clips/day across 3–5 campaigns. Drop campaigns under ~$1 per 1,000 views or with rejected clips; add new ones. |
 | Dec 6 checkpoint | Earnings per clip, per campaign, per hour of owner time → keep, change or stop. |
 | Month 2 | If clips average 10K+ views: one-page media kit with our numbers, then outreach to 50 small streamers, artists and apps offering view campaigns. That's the broker step. |

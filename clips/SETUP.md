@@ -8,11 +8,11 @@ Do the parts in order on a computer. Nothing here costs money. **Never paste a t
 3. **Link them:** Facebook Page → Settings → *Linked accounts* → Instagram → Connect → log into @chatclipped. (Automatic posting to Instagram needs this link.)
 4. **Bio on both:** "The moments chat clipped. Daily streamer highlights. All credit to the creators. Clip removal: DM us."
 
-## Part B: Whop (10 min)
-1. whop.com → sign up → open **Content Rewards** → connect and verify **@chatclipped on Instagram** (it must be the professional account from A2). Facebook isn't a Content Rewards platform; we post there for extra reach only.
-2. Browse campaigns: filter **Clipping**, then look for **streamers** (Twitch/Kick). Send the agent a screenshot or list of 10–20 with name, pay per 1,000 views, budget left and rules. **Skip gambling, casino and crypto campaigns.**
-3. Join the 3–5 the agent picks.
-4. ID check (KYC) when you first withdraw.
+## Part B: Content Rewards (10 min)
+Content Rewards (formerly "Whop Content Rewards") now runs on its own site, contentrewards.com. Whop only handles withdrawals.
+1. contentrewards.com → **Get started** → sign up → **Settings → connected accounts** → connect and verify **@chatclipped on Instagram** (the professional account from A2). It must be connected **in Content Rewards itself**; an Instagram linked inside Whop's settings doesn't count. Facebook isn't a Content Rewards platform; we post there for extra reach only.
+2. Campaigns: the agent already shortlists open streamer campaigns daily in **`clips/campaigns.md`**, with its picks in `gta6/OPS.md`. **Join the ones the agent recommends** (each is one **Join Campaign** click), then tell the agent which you joined. After you join, the campaign's rules and reference files unlock; copy any rules the agent can't see into the chat.
+3. Withdrawals go Content Rewards balance → Whop balance → bank/PayPal. You'll need a Whop account with a payout method and an ID check (KYC) the first time you withdraw.
 
 ## Part C: Twitch app, so the agent can find and download clips (5 min)
 1. Log into twitch.tv (any account, but it needs **two-factor authentication** turned on: Settings → Security).
@@ -27,7 +27,7 @@ Do the parts in order on a computer. Nothing here costs money. **Never paste a t
 5. Run `GET <Page ID>?fields=instagram_business_account` → copy the **`id`** inside `instagram_business_account` (the Instagram user ID).
 
 ## Part E: Hand the keys to the agent (5 min)
-1. On claude.ai/code, open a new session and pick the environment **`branden-chatclipped`** (the agent created it; it allows Meta, Twitch, Whop and the speech-to-text model download, which the default environment blocks).
+1. On claude.ai/code, open a new session and pick the environment **`branden-chatclipped`** (the agent created it; it allows Meta, Twitch, Content Rewards and the speech-to-text model download, which the default environment blocks).
 2. Environment menu → **Edit** → Environment variables, add:
    ```
    TWITCH_CLIENT_ID=...
