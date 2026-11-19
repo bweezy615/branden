@@ -16,7 +16,8 @@ Streamer entry:
   {"twitch": "login", "name": "Display Name", "campaign": "Whop campaign URL or program name",
    "facecam": "auto" | [x, y, w, h] | null,   # auto-detect, fixed fractions, or no facecam layout
    "game": "Marvel Rivals",                    # optional: only clips in this exact Twitch category
-   "tags": ["#campaign", "#tags"], "caption_note": "text the campaign requires"}
+   "tags": ["#campaign", "#tags"], "caption_note": "text the campaign requires",
+   "brand_tag": false}                          # optional: drop the on-screen @handle where logos are banned
 """
 import csv
 import json
@@ -138,7 +139,7 @@ def make(work: Path, cfg: dict, post: bool) -> None:
             continue
         s = streamers[it["streamer"]]  # KeyError = not permitted: stop
         out = render(Path(it["src"]), it["words"], it["hook"], work / "out" / f"{it['clip_id']}.mp4",
-                     tuple(it["facecam"]) if it["facecam"] else None, s["twitch"])
+                     tuple(it["facecam"]) if it["facecam"] else None, s["twitch"], s.get("brand_tag", True))
         row = {"date": str(date.today()), "streamer": s["twitch"], "campaign": s["campaign"],
                "clip_id": it["clip_id"], "clip_url": it["clip_url"], "clip_views": it["clip_views"],
                "title": it["title"], "hook": it["hook"], "ig_media_id": "", "ig_url": "",

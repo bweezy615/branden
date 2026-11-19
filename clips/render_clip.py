@@ -47,7 +47,8 @@ def caption_groups(words: list[dict]) -> list[dict]:
     return groups
 
 
-def write_ass(hook: str, words: list[dict], duration: float, has_cam: bool, twitch_login: str, path: Path) -> None:
+def write_ass(hook: str, words: list[dict], duration: float, has_cam: bool, twitch_login: str,
+              brand_tag: bool, path: Path) -> None:
     hook_y = CAM_H if has_cam else 400
     header = f"""[Script Info]
 ScriptType: v4.00+
@@ -69,10 +70,11 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
     hook_text = hook.replace("\n", "\\N").upper()
     lines = [
         f"Dialogue: 2,{ass_time(0)},{ass_time(min(HOOK_S, duration))},Hook,,0,0,0,,{{\\pos({W // 2},{hook_y})}}{hook_text}",
-        f"Dialogue: 0,{ass_time(0)},{ass_time(duration)},Tag,,0,0,0,,{HANDLE}",
         f"Dialogue: 0,{ass_time(0)},{ass_time(duration)},Credit,,0,0,0,,twitch.tv/{twitch_login}",
         f"Dialogue: 0,{ass_time(0)},{ass_time(duration)},Disclose,,0,0,0,,#ad",
     ]
+    if brand_tag:  # off for campaigns that ban logos/watermarks (e.g. Reach: "Logos of any kind are not allowed")
+        lines.append(f"Dialogue: 0,{ass_time(0)},{ass_time(duration)},Tag,,0,0,0,,{HANDLE}")
     cap_y = 1330 if has_cam else 1390
     for g in caption_groups(words):
         lines.append(f"Dialogue: 1,{ass_time(g['start'])},{ass_time(g['end'])},Cap,,0,0,0,,{{\\pos({W // 2},{cap_y})}}{g['text']}")
@@ -109,14 +111,14 @@ def video_filter(facecam: tuple[float, float, float, float] | None, src_w: int, 
 
 
 def render(clip: Path, words: list[dict], hook: str, out: Path,
-           facecam: tuple[float, float, float, float] | None, twitch_login: str) -> Path:
+           facecam: tuple[float, float, float, float] | None, twitch_login: str, brand_tag: bool) -> Path:
     src_w, src_h, duration = probe(clip)
     if facecam and not all(0 <= v <= 1 for v in facecam):
         raise ValueError(f"facecam box must be fractions 0..1, got {facecam}")
     out.parent.mkdir(parents=True, exist_ok=True)
     ass = out.with_suffix(".ass")
     raw = out.with_suffix(".raw.mkv")
-    write_ass(hook, words, duration, facecam is not None, twitch_login, ass)
+    write_ass(hook, words, duration, facecam is not None, twitch_login, brand_tag, ass)
     subprocess.run(
         ["ffmpeg", "-hide_banner", "-loglevel", "error", "-y", "-i", str(clip),
          "-filter_complex", video_filter(facecam, src_w, src_h, ass),
@@ -136,7 +138,7 @@ def main() -> None:
     clip, words_file, hook, out = Path(sys.argv[1]), Path(sys.argv[2]), sys.argv[3], Path(sys.argv[4])
     login = sys.argv[5]
     facecam = tuple(float(v) for v in sys.argv[6].split(",")) if len(sys.argv) == 7 else None
-    print(render(clip, json.loads(words_file.read_text()), hook, out, facecam, login))
+    print(render(clip, json.loads(words_file.read_text()), hook, out, facecam, login, brand_tag=True))
 
 
 if __name__ == "__main__":
