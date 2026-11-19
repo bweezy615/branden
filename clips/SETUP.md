@@ -6,7 +6,7 @@ Do the parts in order on a computer. Nothing here costs money. **Never paste a t
 1. **Facebook Page:** facebook.com/pages/create → name **Clipamole** → category "Video creator" → Create. Profile picture and cover: plain logo text, no streamer faces.
 2. **Instagram:** create **@clipamole** → Settings → *Account type and tools* → **Switch to professional account** → Creator → category "Video creator".
 3. **Link them:** Facebook Page → Settings → *Linked accounts* → Instagram → Connect → log into @clipamole. (Automatic posting to Instagram needs this link.)
-4. **Bio on both:** "The best stream clips, mashed fresh daily 🥑 / Your favorite streamers' wildest moments 🎥 / All credit to the creators / Clip removal? DM us"
+4. **Bio on both:** "The best stream clips, daily. / All credit to the creators. / Clip removal: DM us."
 
 ## Part B: Content Rewards (10 min)
 Content Rewards (formerly "Whop Content Rewards") now runs on its own site, contentrewards.com. Whop only handles withdrawals.
