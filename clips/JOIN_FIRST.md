@@ -1,13 +1,14 @@
 # Join first: GTA 6 launch campaigns (Nov 19, 2026)
 
-GTA 6 launched today, and streamer marathons are live right now. Pool campaigns split a fixed pot by each clipper's share of approved views **when the pool ends**, so posting early, while few clippers have joined, wins the biggest share. All campaigns below pay on Instagram and use Twitch streams, which our pipeline handles.
+GTA 6 launched today, and streamer marathons are live right now. Pool campaigns split a fixed pot by each clipper's share of approved views **when the pool ends**, so posting early, while few clippers have joined, wins the biggest share. Also on the supervisor's per-view list (`clips/campaigns.md`): Clix x JBL (needs a JBL logo overlay; files unlock after joining) and Bobby Van Riper. All campaigns below pay on Instagram and use Twitch streams, which our pipeline handles.
 
 | Join order | Campaign | Pay | Competition (Nov 19) | Twitch | Rules that matter |
 |---|---|---|---|---|---|
 | 1 | [YourRAGE $5,000 GTA 6 Pool](https://contentrewards.com/c/campaigns/be9b123e-ea47-4305-b6c5-af81f503b247) (Reach) | $5K pool, split by views | **0 clippers**, launched today | yourragegaming | Runs only for his GTA 6 marathon. Reach rules (see below). |
-| 2 | [Lacy $12,500 GTA VI Marathon Pool](https://contentrewards.com/c/campaigns/a5c63fad-cd53-4b81-9305-4a2d1696872a) (Reach) | $12.5K pool, split by views | 37 clippers | lacy | **Ends when the marathon ends.** Lacy's name in the caption or on-screen text, **#LACY**, English. Minimum total views to share the pool. [Rules](https://reachclipping.com/LACYGTA) |
-| 3 | [Kai Cenat $10,000 GTA 6 Pool](https://contentrewards.com/c/campaigns/1d2bcb00-c904-415f-aa82-f95b96baad86) (Clipped & Shipped) | $10K pool, split by views | 46 clippers today; Kai draws hundreds of clip accounts | kaicenat | Biggest audience, toughest competition. Rules unlock after joining. |
-| 4 | [Boeshi Clipping](https://contentrewards.com/c/campaigns/5c01ecdb-a148-4489-ba26-5aadbbb5bf69) (ClipLaunch) | $1.50 per 1K views, up to $300/clip | 4 clippers | darealboeshi | Steady pay per view, not a pool: income after the GTA marathons end. |
+| 2 | [KreekCraft GTA 6 Clipping](https://contentrewards.com/c/campaigns/2eaa14fb-6927-4136-897e-b096e0d907d6) (ClipLaunch) | $1.00 per 1K views, up to $400/clip, $6,825 left | **0 clippers** | kreekcraft | Live with GTA 6 day 1. His stream overlay must be visible and clips must send viewers to his stream, so use the full-frame layout (`"facecam": null`). |
+| 3 | [Lacy $12,500 GTA VI Marathon Pool](https://contentrewards.com/c/campaigns/a5c63fad-cd53-4b81-9305-4a2d1696872a) (Reach) | $12.5K pool, split by views | 37 clippers | lacy | **Ends when the marathon ends.** Lacy's name in the caption or on-screen text, **#LACY**, English. Minimum total views to share the pool. [Rules](https://reachclipping.com/LACYGTA) |
+| 4 | [Kai Cenat $10,000 GTA 6 Pool](https://contentrewards.com/c/campaigns/1d2bcb00-c904-415f-aa82-f95b96baad86) (Clipped & Shipped) | $10K pool, split by views | 46 clippers today; Kai draws hundreds of clip accounts | kaicenat | Biggest audience, toughest competition. Rules unlock after joining. |
+| 5 | [Boeshi Clipping](https://contentrewards.com/c/campaigns/5c01ecdb-a148-4489-ba26-5aadbbb5bf69) (ClipLaunch) | $1.50 per 1K views, up to $300/clip | 4 clippers | darealboeshi | Steady pay per view, not a pool: income after the GTA marathons end. |
 
 **Skipped:**
 - Lauren Hamden GTA 6: wants an account dedicated to her.
@@ -32,6 +33,7 @@ Add an entry **only after the owners confirm they joined** that campaign. Re-rea
 ```json
 {"twitch": "yourragegaming", "name": "YourRAGE", "campaign": "https://contentrewards.com/c/campaigns/be9b123e-ea47-4305-b6c5-af81f503b247", "facecam": "auto", "game": "Grand Theft Auto VI", "tags": ["#yourrage", "#gta6"], "brand_tag": false},
 {"twitch": "lacy", "name": "Lacy", "campaign": "https://contentrewards.com/c/campaigns/a5c63fad-cd53-4b81-9305-4a2d1696872a", "facecam": "auto", "game": "Grand Theft Auto VI", "tags": ["#LACY", "#gta6"], "caption_note": "LACY GTA 6 marathon", "brand_tag": false},
+{"twitch": "kreekcraft", "name": "KreekCraft", "campaign": "https://contentrewards.com/c/campaigns/2eaa14fb-6927-4136-897e-b096e0d907d6", "facecam": null, "game": "Grand Theft Auto VI", "tags": ["#kreekcraft", "#gta6"], "caption_note": "Watch live: twitch.tv/kreekcraft"},
 {"twitch": "kaicenat", "name": "Kai Cenat", "campaign": "https://contentrewards.com/c/campaigns/1d2bcb00-c904-415f-aa82-f95b96baad86", "facecam": "auto", "game": "Grand Theft Auto VI", "tags": ["#kaicenat", "#gta6"]},
 {"twitch": "darealboeshi", "name": "Boeshi", "campaign": "https://contentrewards.com/c/campaigns/5c01ecdb-a148-4489-ba26-5aadbbb5bf69", "facecam": "auto", "tags": ["#boeshi"]}
 ```
