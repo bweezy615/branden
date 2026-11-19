@@ -35,6 +35,7 @@ _Decided Nov 14, 2026 (first supervisor run). Revisit at the Dec 6 and Jan 3 che
 **Revisit triggers:** Dec 6: if long videos average under 1,000 views, shift to more Shorts and test which topics pull; if any video passes 20K, make three follow-ups on the same topic. If owners can't keep up with voiceover, test captions-only long-form on one video and compare retention before changing.
 
 ## Status
+- **Instagram @clipamole created (Nov 19, per the parent session, which saw the owners' screenshot).** Handle confirmed, bio set, profile picture `clips/brand/profile.webp`. Still to do: display name "Clip Mole" → "Clipamole | Streamer Clips", and switch to Professional → Creator (needed for API posting and Content Rewards). Not yet confirmed: Facebook Page, TikTok and X handles, contentrewards.com signup, joined campaigns, keys.
 - **NAME: Clipamole (@clipamole), owners' pick on Nov 17.** ChatClipped was dropped because @chatclipped on Instagram belongs to a competing clip page. When checked: free on Instagram, YouTube, Twitch, Kick; clipamole.com unregistered; no web mentions. TikTok, X and the Facebook username couldn't be checked: owners claim them at signup and tell the agent which handles they got. Brand and tag live in `clips/config.json` (`brand`, `handle`, hashtags). Environment renamed `branden-clipamole`.
 - **Owners OK'd the 2 test renders (Nov 17).** First real posts can go out once accounts, keys and joined campaigns exist, at an owner-chosen posting window.
 - **Clipamole pipeline (Nov 17, tested on environment `branden-clipamole`):** download (yt-dlp) → transcribe (faster-whisper "small", CPU, ~6 s per 10 s clip) → render 1080x1920 at about -14 LUFS all **work**, tested on synthetic clips and one public Twitch clip (render kept in scratch only; nothing posted). Both layouts (facecam-over-gameplay and blurred-fit) checked by eye.
@@ -69,7 +70,7 @@ _Decided Nov 14, 2026 (first supervisor run). Revisit at the Dec 6 and Jan 3 che
 
 ## Owners' checklist (only humans can do these)
 Clipamole, see `clips/SETUP.md`:
-1. **Part A**: Facebook Page + Instagram @clipamole (professional), linked.
+1. **Part A**: ~~Instagram @clipamole~~ created Nov 19; still: switch it to Professional → Creator, rename display to "Clipamole | Streamer Clips", create the Facebook Page and link them.
 2. **Part B**: sign up on contentrewards.com, connect @clipamole there, and **join the 4 campaigns picked under Status**.
 3. **Parts C–D**: Twitch app keys, Meta app + Page token.
 4. **Part E**: start a session on environment `branden-clipamole`, add the 5 keys, say "keys added".
@@ -119,3 +120,4 @@ Clipamole, see `clips/SETUP.md`:
 - Nov 18 07:41 UTC (daily run): No owner input yet (no keys, no joined campaigns, no handles reported). @clipamole re-checked on Instagram: still free. Campaign scan: 22 of 755 fit; all 4 picks still open (DiegoLoveless budget down to $757). New: TOMO GTA VI ($2/1K, YouTube livestreams), Cartier2Real and Bichou (Kick). None fit yet: the pipeline only pulls Twitch clips; YouTube video hosts can't be allowlisted (rotating CDN hostnames); Kick support is possible later if we join a Kick campaign. Nothing rendered or posted.
 - Nov 19 ~02:55 UTC (GTA VI launch; parent session asked for a fresh scan): 24 of 764 fit. New GTA VI campaigns: KreekCraft GTA 6 ($1, $6,825, 0 clippers, live GTA 6 now), Clix x JBL ($1, $4,000, Clix live GTA VI marathon; JBL logo needed), Lauren Hamden GTA 6 (dedicated-account rule: skip). Bobby Van Riper is streaming GTA tonight. "Join first" list (KreekCraft, Clix x JBL, Bobby Van Riper, Boeshi, SkiiMaskTimmy) is at the top of `clips/campaigns.md`; Kick/YouTube-only campaigns listed separately there.
 - Nov 19 ~03:00 UTC: `clips/campaigns.py` now also lists **pool** campaigns (a fixed pot split by views), sorted by pool per clipper. New pool: Arky $3K (Reach, 0 clippers, ends Dec 19). Lacy's GTA pool went from 37 to 178 clippers in a few hours. `clips/JOIN_FIRST.md` is the one hand-picked list (8 picks, refreshed numbers); `clips/campaigns.md` is the full generated scan.
+- Nov 19 ~03:56 UTC: Owners created Instagram @clipamole (confirmed by the parent session from a screenshot). Display name and Professional switch pending.
