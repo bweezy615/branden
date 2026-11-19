@@ -5,7 +5,7 @@ Usage: python3 clips/campaigns.py <out.md> [<out.json>]
 
 Reads the public sitemap, fetches each public campaign page (plain HTML; robots.txt only
 disallows /api/), and reads the campaign record embedded in the page. Keeps campaigns that:
-  - are active, public and pay per 1,000 views (CPM),
+  - are active, public and pay per 1,000 views (CPM) or split a pool by views,
   - pay on Instagram (the one Content Rewards platform we post to),
   - are tagged Streamer or link a Twitch/Kick channel (we clip streams, not game or app ads),
   - have at least MIN_REMAINING_USD of budget left,
@@ -53,10 +53,11 @@ def page_record(url: str) -> dict:
 
 def row(c: dict) -> dict | None:
     """Flatten a campaign into a shortlist row, or None if we can't or shouldn't join it."""
-    if c["status"] != "active" or c["private"] or c["payoutType"] != "cpm":
+    kind = c["payoutType"]
+    if c["status"] != "active" or c["private"] or kind not in ("cpm", "pool"):
         return None
-    ig = next((p for p in c["payouts"] if p["platform"] == "instagram" and p["payoutType"] == "cpm"), None)
-    if not ig or not ig["rateCents"]:
+    ig = next((p for p in c["payouts"] if p["platform"] == "instagram" and p["payoutType"] == kind), None)
+    if not ig or (kind == "cpm" and not ig["rateCents"]):
         return None
     text = f"{c['name']}\n{c.get('description') or ''}"
     cats = {x["id"] for x in c.get("categories") or []}
@@ -72,7 +73,9 @@ def row(c: dict) -> dict | None:
     return {
         "name": c["name"], "url": f"{SITE}/c/campaigns/{c['id']}", "org": c["organizationName"],
         "categories": sorted(cats), "channels": channels,
-        "ig_cpm": ig["rateCents"] / 100, "ig_min": ig["minPayoutCents"] / 100, "ig_max": ig["maxPayoutCents"] / 100,
+        "kind": kind,
+        "ig_cpm": ig["rateCents"] / 100 if kind == "cpm" else None,
+        "ig_max": ig["maxPayoutCents"] / 100 if kind == "cpm" else None,
         "budget": c["budgetCents"] / 100, "remaining": remaining,
         "creators": m["creatorCount"], "views": m["totalViews"],
         "application": c["requiresApplication"], "listed": (c.get("listedAt") or "")[:10],
@@ -93,9 +96,21 @@ def fetch_all(urls: list[str]) -> tuple[list[dict], int]:
 
 
 def markdown(rows: list[dict], scanned: int) -> str:
-    rows = sorted(rows, key=lambda r: (r["ig_cpm"], r["remaining"]), reverse=True)
+    pools = sorted((r for r in rows if r["kind"] == "pool"), key=lambda r: r["budget"] / (r["creators"] + 1), reverse=True)
+    rows = sorted((r for r in rows if r["kind"] == "cpm"), key=lambda r: (r["ig_cpm"], r["remaining"]), reverse=True)
     out = [f"# Open streamer campaigns paying on Instagram ({time.strftime('%b %d, %Y %H:%M UTC', time.gmtime())})", "",
-           f"Scanned {scanned} public Content Rewards campaigns; {len(rows)} match: active, CPM, pays on Instagram, "
+           "Hand-picked shortlist: `clips/JOIN_FIRST.md`. This file is the full scan, regenerated each run.", "",
+           "## Pool campaigns", "",
+           "A fixed pot split by each clipper's share of approved views when the pool ends; fewer clippers means "
+           "a bigger share. Sorted by pool per clipper.", "",
+           "| # | Campaign | Pool | Clippers | Pool per clipper | Views so far | Channels | Apply? |",
+           "|---|---|---|---|---|---|---|---|"]
+    for i, r in enumerate(pools, 1):
+        out.append(f"| {i} | [{r['name']}]({r['url']}) ({r['org']}) | ${r['budget']:,.0f} | {r['creators']} | "
+                   f"${r['budget'] / (r['creators'] + 1):,.0f} | {r['views']:,} | {', '.join(r['channels']) or '-'} | "
+                   f"{'yes' if r['application'] else 'no'} |")
+    out += ["", "## Per-view (CPM) campaigns", "",
+           f"Scanned {scanned} public Content Rewards campaigns; {len(rows)} per-view matches: active, CPM, pays on Instagram, "
            f"tagged Streamer or links a Twitch/Kick channel, at least ${MIN_REMAINING_USD} left, no gambling/crypto. "
            "Rates are listed rates before Content Rewards' 10% fee. **Views per creator** hints at how much each "
            "clipper is getting; very low numbers can mean strict approval.", "",
