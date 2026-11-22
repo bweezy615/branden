@@ -37,7 +37,7 @@ Add an entry **only after the owners confirm they joined** that campaign. Re-rea
 ```json
 {"twitch": "silky", "name": "Silky", "campaign": "https://contentrewards.com/c/campaigns/37f68297-664c-4820-a020-9bbb4a703bf9", "facecam": "auto", "tags": ["#silky"], "brand_tag": false},
 {"twitch": "yourragegaming", "name": "YourRAGE", "campaign": "https://contentrewards.com/c/campaigns/be9b123e-ea47-4305-b6c5-af81f503b247", "facecam": "auto", "game": "Grand Theft Auto VI", "tags": ["#yourrage", "#gta6"], "brand_tag": false},
-{"twitch": "lacy", "name": "Lacy", "campaign": "https://contentrewards.com/c/campaigns/dc7183a8-7779-4b54-99a8-b7ac8c8452ec", "facecam": "auto", "game": "Grand Theft Auto VI", "tags": ["#LACY", "#gta6"], "brand_tag": false},
+{"twitch": "lacy", "name": "Lacy", "campaign": "https://contentrewards.com/c/campaigns/dc7183a8-7779-4b54-99a8-b7ac8c8452ec", "facecam": "auto", "tags": ["#LACY"], "brand_tag": false},
 {"twitch": "kreekcraft", "name": "KreekCraft", "campaign": "https://contentrewards.com/c/campaigns/2eaa14fb-6927-4136-897e-b096e0d907d6", "facecam": null, "game": "Grand Theft Auto VI", "tags": ["#kreekcraft", "#gta6"], "caption_note": "Watch live: twitch.tv/kreekcraft"},
 {"twitch": "arky", "name": "Arky", "campaign": "https://contentrewards.com/c/campaigns/772d9a4f-b60a-4bcb-b9b3-25d7b2edbf25", "facecam": "auto", "tags": ["#arky"], "brand_tag": false},
 {"twitch": "kaicenat", "name": "Kai Cenat", "campaign": "https://contentrewards.com/c/campaigns/1d2bcb00-c904-415f-aa82-f95b96baad86", "facecam": "auto", "game": "Grand Theft Auto VI", "tags": ["#kaicenat", "#gta6"]},
