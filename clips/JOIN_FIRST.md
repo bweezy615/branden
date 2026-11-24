@@ -2,13 +2,13 @@
 
 GTA 6 launched today, and streamer marathons are live right now. Pool campaigns split a fixed pot by each clipper's share of approved views **when the pool ends**, so posting early, while few clippers have joined, wins the biggest share. Also on the supervisor's per-view list (`clips/campaigns.md`): Clix x JBL (needs a JBL logo overlay; files unlock after joining) and Bobby Van Riper. All campaigns below pay on Instagram and use Twitch streams, which our pipeline handles.
 
-| Join order | Campaign | Pay | Competition (Nov 23, 07:45 UTC) | Twitch | Rules that matter |
+| Join order | Campaign | Pay | Competition (Nov 24, 07:45 UTC) | Twitch | Rules that matter |
 |---|---|---|---|---|---|
-| 1 | [Lacy $25,000 30-Day Pool](https://contentrewards.com/c/campaigns/dc7183a8-7779-4b54-99a8-b7ac8c8452ec) (Reach) | $25K pool, split by views; ends Dec 21 | **0 clippers** (live since Nov 21) | lacy (30 clips in 7 days) | Twitch clips allowed ([rules](https://reachclipping.com/Lacy)). Lacy's name in caption or on screen, **#Lacy**, no logos (`"brand_tag": false`), audience at least 50% US/CA/UK/AU/NZ. |
-| 2 | [YourRAGE $7,500 Pool](https://contentrewards.com/c/campaigns/2064cdb1-4357-4380-b99c-119c5b320d31) (Reach) | $7.5K pool, split by views | **0 clippers, new Nov 22** | yourragegaming (30 clips in 7 days) | Any of his content, not GTA-only. Reach rules. |
+| 1 | [Lacy $25,000 30-Day Pool](https://contentrewards.com/c/campaigns/dc7183a8-7779-4b54-99a8-b7ac8c8452ec) (Reach) | $25K pool, split by views; ends Dec 21 | **0 clippers** (live since Nov 21; zero for 2.5 days is unusual for Lacy, so the count may lag, or it may not be listed in the campaign browser yet) | lacy (30 clips in 7 days) | Twitch clips allowed ([rules](https://reachclipping.com/Lacy)). Lacy's name in caption or on screen, **#Lacy**, no logos (`"brand_tag": false`), audience at least 50% US/CA/UK/AU/NZ. |
+| 2 | [YourRAGE $7,500 Pool](https://contentrewards.com/c/campaigns/2064cdb1-4357-4380-b99c-119c5b320d31) (Reach) | $7.5K pool, split by views | **0 clippers** (new Nov 22) | yourragegaming (30 clips in 7 days) | Any of his content, not GTA-only. Reach rules. |
 | 3 | [Arky $3,000 Pool](https://contentrewards.com/c/campaigns/772d9a4f-b60a-4bcb-b9b3-25d7b2edbf25) (Reach) | $3K pool, split by views; ends Dec 19 | **0 clippers** | arky | Reach rules. |
-| 4 | [Silky $7,500 Pool](https://contentrewards.com/c/campaigns/37f68297-664c-4820-a020-9bbb4a703bf9) (Reach) | $7.5K pool, split by views | 23 clippers, 1.6M views | silky | Reach rules; [rules](https://reachclipping.com/Silky). |
-| 5 | [Boeshi GTA 6 Clipping](https://contentrewards.com/c/campaigns/5c01ecdb-a148-4489-ba26-5aadbbb5bf69) (ClipLaunch) | $1.50 per 1K views, up to $300/clip, $1,644 left | 10 clippers | darealboeshi | Steady pay per view. |
+| 4 | [Silky $7,500 Pool](https://contentrewards.com/c/campaigns/37f68297-664c-4820-a020-9bbb4a703bf9) (Reach) | $7.5K pool, split by views | **118 clippers** (23 yesterday), 4.2M views: crowding | silky | Reach rules; [rules](https://reachclipping.com/Silky). |
+| 5 | [Boeshi GTA 6 Clipping](https://contentrewards.com/c/campaigns/5c01ecdb-a148-4489-ba26-5aadbbb5bf69) (ClipLaunch) | $1.50 per 1K views, up to $300/clip, $1,618 left | 13 clippers | darealboeshi | Steady pay per view. |
 
 **Dropped / crowded:** Bobby Van Riper (19 clippers, $838 left), Clix x JBL (budget nearly spent), KreekCraft GTA 6, Kai Cenat $10K pool, Lacy GTA VI marathon pool. The old YourRAGE GTA-only pool is superseded by his general pool above.
 
