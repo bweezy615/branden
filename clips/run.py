@@ -16,6 +16,7 @@ Streamer entry:
   {"twitch": "login", "name": "Display Name", "campaign": "Whop campaign URL or program name",
    "facecam": "auto" | [x, y, w, h] | null,   # auto-detect, fixed fractions, or no facecam layout
    "game": "Marvel Rivals",                    # optional: only clips in this exact Twitch category
+   "clips_between": ["2026-11-14", "2026-11-19"],  # optional: only clips made in this UTC date range
    "tags": ["#campaign", "#tags"], "caption_note": "text the campaign requires",
    "brand_tag": false}                          # optional: drop the on-screen @handle where logos are banned
 """
@@ -79,6 +80,18 @@ def caption(streamer: dict, title: str, cfg: dict) -> str:
     return "\n".join(parts)
 
 
+def clip_window(streamer: dict, cfg: dict) -> tuple[datetime, datetime]:
+    """Clips from the last lookback_hours, or from fixed dates for campaigns that only pay for specific
+    past streams: "clips_between": ["2026-11-14", "2026-11-19"] (UTC dates, end date exclusive)."""
+    if streamer.get("clips_between"):
+        a, b = (datetime.fromisoformat(d).replace(tzinfo=timezone.utc) for d in streamer["clips_between"])
+        if a >= b:
+            raise ValueError(f"{streamer['twitch']}: clips_between start must be before end")
+        return a, b
+    now = datetime.now(timezone.utc)
+    return now - timedelta(hours=cfg["lookback_hours"]), now
+
+
 def plan(work: Path, cfg: dict) -> Path:
     from facecam import detect
     from transcribe import transcribe
@@ -87,7 +100,8 @@ def plan(work: Path, cfg: dict) -> Path:
     tw, done, picks = Twitch(), logged_ids(), []
     for s in cfg["streamers"]:
         game = tw.game_id(s["game"]) if s.get("game") else None  # campaigns that only pay for one game
-        for c in tw.top_clips(s["twitch"], cfg["lookback_hours"]):
+        start, end = clip_window(s, cfg)
+        for c in tw.top_clips(s["twitch"], start, end):
             if c["id"] not in done and c["view_count"] >= cfg["min_clip_views"] and game in (None, c["game_id"]):
                 picks.append((s, c))
     picks.sort(key=lambda sc: sc[1]["view_count"], reverse=True)

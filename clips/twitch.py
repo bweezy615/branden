@@ -51,9 +51,11 @@ class Twitch:
             raise RuntimeError(f"Twitch game {name!r} not found (needs the exact category name)")
         return games[0]["id"]
 
-    def top_clips(self, login: str, hours: int = 36) -> list[dict]:
-        since = (datetime.now(timezone.utc) - timedelta(hours=hours)).strftime("%Y-%m-%dT%H:%M:%SZ")
-        clips = self.get("clips", broadcaster_id=self.user_id(login), started_at=since, first=20)
+    def top_clips(self, login: str, start: datetime, end: datetime) -> list[dict]:
+        """Most-viewed clips created between start and end (UTC)."""
+        fmt = "%Y-%m-%dT%H:%M:%SZ"
+        clips = self.get("clips", broadcaster_id=self.user_id(login),
+                         started_at=start.strftime(fmt), ended_at=end.strftime(fmt), first=20)
         return sorted(clips, key=lambda c: c["view_count"], reverse=True)
 
 
@@ -71,7 +73,8 @@ def download(clip_url: str, out: Path) -> Path:
 def main() -> None:
     args = sys.argv[1:]
     if len(args) in (2, 3) and args[0] == "top":
-        clips = Twitch().top_clips(args[1], int(args[2]) if len(args) == 3 else 36)
+        end = datetime.now(timezone.utc)
+        clips = Twitch().top_clips(args[1], end - timedelta(hours=int(args[2]) if len(args) == 3 else 36), end)
         print(json.dumps([{k: c[k] for k in ("id", "url", "title", "view_count", "duration", "created_at")}
                           for c in clips], indent=2))
     elif len(args) == 3 and args[0] == "get":
